@@ -1,0 +1,723 @@
+---
+bibliography: "argument-validity-proof.bib"
+number-sections: true
+crossref: 
+    chapters: true
+---
+
+{{< include /assets/macros/macros.qmd >}}
+
+# Argument, Validity & Proof {#sec-argument-validity-proof .chapter}
+
+## Introduction {#sec-argument-validity-proof-introduction}
+
+### In What Sense is Logic Mathematical?
+
+_Logic_, in the most general sense of the term, refers to the study of the norms that govern the activity of reasoning.
+In this sense, logic concerns not only the sort of reasoning expressed in mathematical proofs but also such reasoning as underwrites a statistical inference or the confirmation of a scientific theory.
+If we further countenance informal methods of reasoning, the scope of logic grows wider still, comprehending such rhetorical forms of argumentation as one might encounter in a philosophy text or a newspaper editorial and even those vague heuristics and patterns of inference summarized by the phrase "common sense".
+Given such a wide scope of application, any introduction to logic must begin with a suitably delimited statement of its intended subject matter.
+
+Notwithstanding the generic title of this course, the topic of our inquiry can more aptly be termed _deductive_ logic, or, to use a less technical term, _mathematical_ logic.
+What exactly is meant by this phrase?
+The most obvious function of the qualifier 'mathematical' when prefixed to the term logic is to restrict the subject matter of the inquiry to the particular sort of reasoning that is done in mathematics.
+Mathematical logic, in this sense of the phrase, is exclusively concerned with reasoning of the sort which ensures that the truth of a conclusion follows from various assumptions in just the way that the truth of a theorem in geometry follows from more basic claims, or axioms, characterizing elementary geometrical notions such as points, lines, planes, and the like.
+In fact, it turns out that the systems of logic that we will examine in this course are remarkably well-suited to the study of such reasoning.
+Indeed, among the many impressive achievements of the landmark investigations into the foundations of mathematics conducted in the first half of the 20th century was the discovery that a single system of what shall later be introduced as first-order quantificational logic, involving only a handful of axiom schemas, is sufficient to comprehend all but a small fraction of the proofs that have ever been given in mathematics!
+
+There is, however, a second sense of the phrase 'mathematical logic' that will be equally relevant for our purposes.
+In this alternative sense, the phrase 'mathematical' functions as an adverbial modifier, indicating something about the methodology by which the study of logic is to be pursued rather than delimiting its material.
+Specifically, it implies that the methods to be employed in this study are themselves mathematical in nature.
+Thus, just as mathematical psychology does not refer to the psychological study of mathematicians but instead to the deploy of mathematical techniques to investigate formal models of psychological processes, mathematical logic, in this latter sense of the phrase, does not refer to the study of such reasoning as is done by mathematicians but instead to the study of logic _done mathematically_.
+In line with this approach, the systems of logic that we will consider in this course will themselves be represented as mathematically well-defined structures, and the claims that we will make about these systems will be established using standard mathematical techniques.
+
+"Logic", as the phrase will be used in this course, is to be understood as mathematical in both of the above senses of the term.
+In fact, it is this duality of meaning which endows the subject not only with its peculiar charm, but also with no small part of its philosophical value.
+For, if logic is concerned to study the sort of reasoning done in mathematics and if, at the same time, it is itself just a branch of mathematics, then one may meaningfully ask what follows when the claims established in the study of logic are applied to itself.
+The answer, as it turns out, is quite a lot!
+The essentially self-reflective nature of logic is what allows for the precise formulation of such provocative theses as "arithmetical truth cannot be defined arithmetically", and "if a computer can simulate all of our mathematical reasonings, then, in principle, we cannot fully grasp how it works".
+
+In order to reflect seriously on the philosophical import of such claims, one must first understand what exactly they mean.
+And, for this, we require a thorough understanding of the basic concepts of logic.
+Let us begin, then, by considering in more detail how the study of logic can be made mathematical.
+
+### Making Logic Mathematical
+
+Logic seeks to investigate the norms that govern the activity of _reasoning_.
+An act of reasoning proceeds from certain claims that one takes to be true.
+One then applies to these claims some prescribed set of rules or rational methodology, in accordance with which one is led to infer that something else is true.
+
+Logic, then, is concerned to investigate the general conditions under which reasoning leads to good---or, to use the logician's preferred approbative, _valid_---inferences.
+It is thus concerned with questions of the following form:
+
+1. Is a given method of reasoning such as to result in only valid inferences or, by employing that method, can one sometimes be led to draw invalid inferences as well?
+
+2. Are there some valid inferences in a given domain which, in principle, cannot result from applying a given method of reasoning, or are all such inferences invalid?
+
+To render such questions mathematically precise, the following tasks must first be performed:
+
+1. Inferences must be represented as mathematical objects.
+
+2. The standard of assessment by which a given inference is judged to be valid or invalid must be expressed in terms of the possession by that inference of a mathematically well-defined property.
+
+3. A method of reasoning must be described in such a way that it becomes a mathematical question whether or not a given inference can result from that method.
+
+Once these tasks have been performed, the two questions listed above become no less mathematically well-defined than the question: is $4,\!753,\!234,\!127$ a prime number?
+In the remainder of this chapter, we take up each of these three tasks in turn.
+
+## Arguments {#sec-argument-validity-proof-arguments}
+
+In psychological terms, an inference can be characterized as a rational transition in thought.
+We think certain thoughts and, for reason of thinking these thoughts, we are led to think something else.
+It is natural to regard the thoughts involved in an inference as non-linguistic abstractions, distinct from the specific sentences that may be used to express these thoughts in a particular language.
+Thus, for example, one may wish to allow that one and the same thought, say, the thought that 'snow is white', can be expressed in German and French by the sentences 'schnee ist weiß' and 'la neige est blanche', respectively.
+Moreover, if two thinkers, one in German and one in French, were each to conclude from this that 'something is white'---'etwas ist weiß' or 'quelque chose est blanc'---then, it may well be said, that, despite their linguistic differences, both reasoners have drawn one and the same inference.
+
+Nevertheless, for the purpose of representing inferences as mathematical objects, we will disregard the intuitive difference between an inference in thought and its linguistic formulation and construe inferences as purely syntactic constructs.
+In other words, we will represent an inference by a particular collection of grammatically well-formed sentences expressed in a given language.
+
+We will refer to the syntactic objects representing inferences as _arguments_.
+An argument is a collection of sentences, one of which is distinguished as that for the sake of which the others are set forth.
+The distinguished sentence is referred to as the argument's _conclusion_ and the sentences offered in its support as the argument's _premises_.
+The specific syntax in which we will formulate arguments will not be that of a natural language such as English but instead that of an artificial language devised for the express purpose of representing certain patterns of inference.
+
+We adopt this approach so as to minimize the syntactic complexity of the arguments that we consider.
+The rules determining when a sequence of symbols in the English alphabet (or a sequence of words in the English lexicon) constitute a grammatically well-formed sentence are exceedingly complex, and much of this complexity is unnecessary for capturing the differences in meaning that are relevant for assessing the validity of the particular inferences with which we will be concerned.
+For example, while there may be some subtle difference in meaning between the sentences "John gave the letter to Mary" and "Mary was given the letter by John", this difference in meaning, while relevant perhaps for producing a desired literary effect, is altogether irrelevant for judging whether or not it follows from this claim that, say, "Mary was given something by someone".
+Consequently, to avoid overcomplicating the syntax, we will study such inferential relations in a language whose grammar ignores the distinction between active and passive voice constructions.
+
+In each of the artificial languages that we will consider, the syntax of the language will be introduced in two distinct stages:
+
+1. First, we will specify an _alphabet_ for the language, i.e., a set of symbols.
+   Any finite string of symbols from this alphabet will be referred to as an _expression_ of the language.
+2. Second, we will specify _grammatical rules_ determining when a given expression is well-formed.
+   A grammaticaly well-formed expression will be called a _sentence_ of the language.
+
+Sentences, thus defined, are purely syntactic constructs.
+They are strings of symbols devoid of any meaning.
+Of course, our choice of the syntax for a language will in all cases be guided by semantic considerations.
+In other words, we will always have in mind a certain conception of how various linguistic items are to be interpreted and we will choose our syntax so as to ensure that the sentences in the language consist only of expressions which, when given such an interpretation, express meaningful claims.
+
+We are now ready for our first official definition, that of an _argument_:
+
+::: {#def-argument data-re="arguments?" data-flags="gi"}
+An _argument in the language $L$ _ consists of (i) a possibly empty set of sentences of $L$, whose members are referred to as the argument's _premises_; and (ii) a sentence of $L$ referred to as the argument's _conclusion_.
+We denote the argument whose premises comprise the set of sentences $\Gamma$ and whose conclusion is the sentence $\varphi$, as follows:
+  $$
+    \Gamma\proves\ph 
+  $$
+:::
+
+For the sake of readability, when expressing arguments, we will often omit the outer braces from the premise set.
+Thus, for example, the argument whose premises comprise the set $\{\ph_1,\ldots,\ph_n\}$ and whose conclusion is $\psi$ may be written:
+
+$$
+ \ph_1,\ldots,\ph_n\proves\psi 
+$$
+
+More generally, if $\Ga_1,\ldots,\Ga_n$ are sets of sentences and $\ph_1,\ldots,\ph_m$ are sentences, we will write:
+
+$$
+\Ga_1,\ldots,\Ga_n,\ph_1,\ldots,\ph_m\proves\psi
+$$
+
+for the argument whose premises comprise the set $\Ga_1\cup\cdots\cup\Ga_n\cup\{\ph_1,\ldots,\ph_m\}$ and whose conclusion is $\psi$.
+In addition, we adopt the convention that if the premise set of an argument is the empty set, we will omit reference to it altogether, writing $\proves\ph$ in place of $\emptyset\proves\ph$.
+
+:::{#exm-0x1-syntax .example}
+{{< include /inserts/examples/0s-x-1s/syntax.qmd >}}
+
+:::{#exr-expressions}
+{{< include /exercises/expressions.qmd >}}
+::: 
+
+:::{#exr-expression-trees}
+{{< include /exercises/expression-trees.qmd >}}
+::: 
+:::
+
+## Validity {#sec-argument-validity-proof-validity}
+
+### Necessary Truth Preservation
+
+We have now seen how inferences can be treated as mathematical objects by representing them as arguments in a formal language.
+The next task that we face is to formulate a mathematically precise standard of argumentative validity.
+As a first step, it will be helpful to consider what we mean when we say that an argument is valid.
+Consider the following hackneyed syllogism:
+
+$$
+\textrm{Socrates is a man, Every man is mortal}\proves\textrm{Socrates is mortal}
+$$
+
+Intuitively this is a valid argument.
+But what about this argument _makes_ it valid?
+One answer that readily comes to mind is that the argument is valid because its conclusion follows _necessarily_ from its premises.
+Or, in other words, it is valid because the truth of its premises _necessitates_ that of its conclusion.
+
+Let us try to formulate this conception of validity in mathematical terms, by making precise the notion of necessary truth preservation in a formal language of the sort discussed in the previous section.
+
+::: {#def-truth-valuation data-re="valuations?" data-flags="gi"}
+A _truth valuation_ of a language $L$ is any function which assigns to each of the sentences of $L$ a value in the set $\{\true, \false\}$.
+We refer to the members of this set as _truth values_.
+:::
+
+To indicate that $val(\ph)=\true$, we will sometimes say that '$\ph$ is _true_ under the valuation $val$', and to indicate that $val(\ph)=\false$, that '$\ph$ is _false_ under the valuation $val$'.
+
+What are these mysterious objects $\true$ and $\false$ which somehow manage to convey truth and falsehood to a sentence simply in virtue of their being assigned to it by a valuation?[^truth-values] Metaphysically, this may seem an interesting question, but for the purpose of giving a precise definition of argumentative validity, it doesn't really matter.
+All that matters for this purpose is that $\true$ are $\false$ are distinct items, and that these two distinct items are the only two values of truth that a sentence can be assigned.[^bivalence] They may just as well be thought of as the letters '$\true$' and '$\false$' themselves, for apart from their obvious mnemonic value any two distinct items would suffice in their place.
+
+[^truth-values]: For a history of the mathematical conception of truth-value, see @Beziau2012-ui.
+Béziau writes: "At the level of a general definition [a truth-value] is pure abstract nonsense, trivial for a mathematician, beyond understanding for a philosopher whether analytic or synthetic" (p. 238).
+
+[^bivalence]: The assumption that a sentence can take exactly one of two values is referred to as the principle of _bivalence_.
+Innocuous as it may seem, bivalence is perhaps the most contentious principle in all of logic.
+Later on in this course, we will investigate notions of validity that are based on a multivalent semantics in which sentences can be assigned one of many truth values.
+We will also consider semantics in which a sentence may be assigned no truth value at all.
+
+When we assert that an argument is valid, we will always do so relative to a certain set of truth valuations.
+That the truth of an argument's premises necessitate that of its conclusion will then correspond to the fact that for _every_ truth valuation in this set, if all the premises of the argument are true under that valuation, the conclusion is true under that valuation as well.
+
+::: {#def-relative-validity}
+The argument
+   $$
+   \Ga\proves\ph
+   $$
+is _valid_ with respect to the set of truth valuations $V$ if, for every truth valuation $val\in V$, the following is true: if $val(\psi)=\true$, for all $\psi\in\Ga$, then $val(\ph)=\true$.
+To express this, we write:
+   $$
+   \Ga\models_V\ph
+   $$
+:::
+
+The symbol '$\models$' is sometimes referred to as the double turnstile, and its counterpart symbol '$\proves$' as the single turnstile.
+When expressing claims of validity, using the double turnstile, we will adopt the same conventions used to denote arguments with the single turnstile described in the paragraph which follows @def-argument.
+
+It may seem that the above definition of validity is sufficiently abstract that nothing of substance can be inferred from it about which arguments are valid and which are not.
+This, however, is not so.
+Already, the characterization of argumentative validity as necessary truth preservation implies a number of substantive facts, three of which are stated in the following theorem:
+
+:::{#thm-semantic-structure .theorem}
+Let $V$ be any set of valuations.
+For any sentences $\ph, \psi$ and any sets of sentences $\Ga, \De$, the following claims hold:
+
+i. $\Ga,\ph\models_V\ph$
+
+ii. If $\Ga\models_V\ph$, then $\Ga, \De\models_V\ph$.
+
+iii. If $\Ga,\ph\models_V\psi$ and $\De\models_V\ph$, then $\Ga,\De\models_V\psi$.
+
+:::{.proof} 
+i. Since $\ph\in\Ga\cup\{\ph\}$, any valuation in $V$ under which all of the sentences in $\Ga\cup\{\ph\}$ are true is one in which $\ph$ is true.
+   But, this means $\Ga,\ph\models_V\ph$.
+
+ii. Suppose $\Ga\models_V\ph$ and let $val\in V$ be a truth valuation such that $val(\psi)=\true$ for all $\psi\in \Ga\cup\De$.
+    Since $\Ga\subset\Ga\cup\De$ it follows that $val(\psi)=\true$ for all $\psi\in \Ga$.
+    So, since $\Ga\models_V\ph$, we have $val(\ph)=\true$.
+    Hence, any valuation in $V$ under which all of the sentences in $\Ga\cup\De$ are true is one in which $\ph$ is true.
+    In other words, $\Ga\cup\De\models_V\ph$.
+
+iii. Suppose that $\Ga,\ph\models_V\psi$ and $\De\models_V\ph$, and let $val\in V$ be a truth valuation such that $val(\chi)=\true$ for all $\chi\in \Ga\cup\De$.
+     Since $\De\subset \Ga\cup\De$ it follows that $val(\chi)=\true$ for all $\chi\in\De$.
+     So, since $\De\models_V\ph$, we have $val(\ph)=\true$.
+     Moreover, since $\Ga\subset \Ga\cup\De$ it follows that $val(\chi)=\true$, for all $\chi\in\Ga$.
+     Hence, $val(\chi)=\true$, for all $\chi\in\Ga\cup\{\ph\}$.
+     So, since $\Ga\cup\{\ph\}\models_V\psi$, $val(\psi)=\true$.
+     Hence, any valuation in $V$ under which all of the sentences in $\Ga\cup\De$ are true is one in which $\psi$ is true.
+     In other words, $\Ga\cup\De\models_V\psi$.
+:::
+:::
+
+The first of these claims asserts that any argument is valid whose conclusion appears among its premises.
+But should a patently circular argument such as
+
+$$
+\textrm{Socrates is a man}\proves\textrm{Socrates is a man}
+$$
+
+really be counted as valid?
+
+The second claim asserts that the validity of an argument is preserved under the arbitrary addition of new premises.
+But what if the added premises are entirely irrelevant to the truth of the conclusion at hand.
+For example, should the following argument be considered valid:
+$$
+\textrm{Socrates is a man, Every man is mortal}, 2+2=4\proves\textrm{Socrates is mortal}
+$$
+
+We will have occasion to revisit such questions later on in this course.
+For now, we only note that they are definitively answered in the affirmative by the view of validity which conceives of it as nothing more than necessary truth preservation.
+
+:::{#exr-relative-validity .exercise}
+{{< include /exercises/relative-validity.qmd >}}
+:::
+
+In assessing the validity of an argument which set of truth valuations should we consider?
+A natural answer, one might think, is that we should consider _all_ possible assignments of truth and falsehood to the sentences of our language.
+This, after all, would correspond to the strictest possible notion of validity---and what could be stricter than logic?
+To adopt this approach, however, will not do, for the reason indicated by the following theorem:
+
+:::{#thm-trivial-validity .theorem}
+Let $V$ be the set of all possible truth valuations of a language.
+Then $\Ga\models_V \ph$ if and only if $\ph\in\Ga$.
+
+:::{.proof} 
+The left-to-right direction (or, the 'if' direction) of the claim follows from @thm-semantic-structure.(i).
+For the right-to-left direction (or, the 'only if' direction) of the claim, suppose that $\ph\not\in\Ga$.
+Then, since $V$ consists of all possible valuations, there exists some valuation in $V$ under which all of the sentences in $\Ga$ are true but the sentence $\ph$ is false.
+Hence, $\Ga\not\models_V\ph$.
+:::
+:::
+
+This theorem asserts that an argument is valid with respect to the set of all truth valuations of a language if and only if its conclusion appears among its premises.
+Consequently, without somehow restricting the class of admissible valuations, we are left with a trivial standard of argumentative validity in which the only valid arguments are circular ones.
+How then are we to restrict the class of admissible truth valuations in a nonarbitrary way?
+To answer this question, we must examine in more detail the specifically logical sense of necessity implicated in claims of argumentative validity.
+
+### Logical Necessity
+
+Let us return to the argument:
+
+$$
+\textrm{Socrates is a man, Every man is mortal}\proves\textrm{Socrates is mortal}
+$$
+
+As we have said, this argument is valid in virtue of the fact that the truth of its premises necessitate the truth of its conclusion.
+But, in what exact sense of 'necessity' does Socrates' mortality necessarily follow from Socrates being a man and the fact that all men are mortal?
+
+In general, when we say of a claim that it is necessarily true we assert not only that it is true but, moreover, that its truth is not a contingent, or incidental, matter.
+Its truth, in other words, is independent of certain features of the context in which it is affirmed.
+The precise sense of the modality is determined by which features of the context are deemed incidental to the truth of the claim in question.
+For example, to assert that the Sun _always_ rises in the east, is to assert not only that the Sun will rise in the east (today) but, moreover, that this claim would be true regardless of the specific day on which it is put forward.
+Hence, the sun's rising is a temporal (or, more specifically, a diurnal) necessity.
+Likewise, to assert that you are _forbidden_ from castling when your king is in check, is not only to assert that you cannot castle from some one particular arrangement of the pieces in which a check has been made, but that the same prohibition remains in force in any such scenario that may arise in a game of chess.
+Hence, the disallowance of castling out of check is a deontic necessity.[^modalities]
+
+[^modalities]: The branch of logic that studies the various modalities implicated in necessity claims is called _modal_ logic.
+See Chapter ??? below.
+
+What, then, are we to make of logical necessity?
+When we say that it is necessarily the case that if the premises of the above argument are true, so too is its conclusion, not only do we assert the truth of the following conditional:
+
+(P): If 'Socrates is a man' and 'Every man is mortal' are true, then 'Socrates is mortal' is true.
+
+we further assert that (P) would be true _regardless_ of certain features of the context in which it is here affirmed.
+What features of the context do we have it in mind to ignore as irrelevant when we describe (P) as logically necessary?
+Presumably what is meant by this is that (P) would remain true no matter who (or what) the name 'Socrates' refers to, and no matter what properties are designated by the phrases 'man' and 'mortal'.
+Thus, for example, if the name 'Socrates' were to refer to Kurt Gödel, the phrase 'man' to the property of being German, and the phrase 'mortal' to the property of being a poor logician, it would still follow from the truth of the sentences 'Socrates is a man' and 'Every man is mortal', that the sentence 'Socrates is mortal' is true.
+For: if all Germans are poor logicians, and Kurt Gödel is German, then Kurt Gödel, too, is a poor logician.
+
+Note that it is crucial to this line of reasoning that the constructs 'Every $\cdots$ is $\smallblank$' and '$\cdots$ is a $\smallblank$' are taken to possess their usual meaning, i.e., the former asserts that all objects possessing the property designated by '$\cdots$' also possess the property designated by '$\smallblank$', and the latter asserts that the object named by '$\cdots$' possesses the property designated by '$\smallblank$'.
+If the meanings of these constructs were allowed to vary along with those of 'Socrates', 'mortal', and 'man' (e.g., if 'Every $\cdots$ is $\smallblank$' were taken to mean that only _some_ $\cdots$'s are $\smallblank$'s) then there may be ways of interpreting the premises and conclusion of the argument according to which the premises are true but the conclusion false.
+
+As this example illustrates, when we assess the validity of an argument we always take for granted a certain distinction between those elements of the syntax that are taken to have a fixed meaning for the purpose of this assessment and those elements of the syntax whose meanings are allowed to vary.
+We refer to the former as the _logical_ elements of the syntax and to the latter as its _non-logical_ elements.
+To say that an argument is valid is to assert that, under the assumption that the logical elements of the syntax are given their usual meaning, the truth of the argument's conclusion follows from the truth of its premises no matter how the non-logical elements of the syntax are interpreted.
+The sense of necessity implicated in claims of validity is thus a kind of _semantic_ necessity---it is truth in sole virtue of the meanings of the logical elements of the syntax.
+
+### Semantics 
+
+Let us now return to the question of how to restrict the class of admissible truth valuations so as to give rise to a non-trivial standard of argumentative validity.
+Given our previous discussion of logical necessity, the answer to this question should now be clear.
+To restrict the class of admissible truth valuations, we will appeal to the fixed meanings of the logical elements of the syntax.
+
+With respect to a particular language, a description of the constraints imposed by the meanings of the logical elements of its syntax on the class of admissible truth valuations is called a semantic framework, or simply a _semantics_.[^extensional-semantics] In general, we will specify a semantics for a language by means of the following three-stage procedure:
+
+[^extensional-semantics]: More precisely, this sort of semantic framework, in which the meanings of the logical constants are represented by constraints on the class of admissible truth valuations, is called an _extensional_ semantics.
+By contrast, an _intensional_ semantics does not interpret meaning in terms of truth and falsehood, but in more fine-grained terms, by appeal to notions like conceptual content, truthmakers, or possible worlds.
+We will consider intensional semantic frameworks in Chapter ??? below.
+
+1. A certain set of expressions of the language will be identified as the non-logical elements of the syntax.
+
+2. With each non-logical element of the syntax we will associate a set of possible semantic values.
+   An _interpretation_ of the language will then be any function which assigns to each non-logical element of the syntax a particular value from this set.
+
+3. We will formulate a set of _semantic rules_ for the language which associates with each possible interpretation $\sigma$ a unique truth valuation $val^\sigma$.
+
+The class of admissible truth valuations with respect to which we will assess the validity of arguments will be those of the form $val^\si$, i.e., those which result from the application of the semantic rules to a specific interpretation of the non-logical elements of the syntax.
+In general, the semantic rules for the language---which encode the meanings of the logical elements of the syntax---will be chosen in such a way that not every truth valuation will be of the form $val^\sigma$.
+Hence, it is these semantic rules that will render our standard of validity nontrivial.
+
+Whenever we assess the validity of an argument it will always be assumed that our assessment occurs against the background of an already specified semantics.
+Taking this for granted, we can now replace @def-relative-validity with the following, more specific definition of validity:
+
+::: {#def-validity}
+The argument
+   $$
+   \Ga\proves\ph
+   $$
+is _valid_ if, for every interpretation $\si$, the following is true: if $val^\si(\psi)=\true$, for all $\psi\in\Ga$, then $val^\si(\ph)=\true$.
+To express this, we write:
+   $$
+   \Ga\models\ph
+   $$
+In this case, we may also say that $\Ga$ _entails_ $\ph$, or that $\ph$ is a _logical consequence_ of $\Ga$.
+:::
+
+As an illustration of @def-validity, let us consider one last time the argument:
+$$
+\textrm{\textcolor{red}{Socrates} is \textcolor{red}{a man}, Every \textcolor{red}{man} is \textcolor{red}{mortal}}\proves\textrm{\textcolor{red}{Socrates} is \textcolor{red}{mortal}}
+$$
+
+The non-logical elements of the syntax appearing in this argument have been highlighted in red.
+They include the proper name 'Socrates' as well as the common nouns 'man' and 'mortal'.
+An interpretation of the language must assign semantic values to each of these terms, but what should these semantic values be?
+Let's begin with the term 'Socrates'.
+A proper name like 'Socrates' is intended to denote a particular object.
+Let $\W$ be a set comprising some domain of objects that is sufficiently comprehensive so as to include all the objects to which the proper name 'Socrates' might refer.
+It could be that $\W$ is the set of all Greek philosophers, or the set of all persons, or the set of all objects in the universe.
+In any case, we will take the possible semantic values of the name 'Socrates' to be given by the objects in $\W$.
+Now, for the common nouns 'man' and 'mortal'.
+These terms are intended to denote properties of the sort that can be predicated of individual objects.
+If we identify a property with the class of all and only those objects possessing said property, the possible semantic values of the common nouns 'man' and 'mortal' will then be given by subsets of the set of objects $\W$.
+An illustration of an interpretation of the terms 'Socrates', 'man', and 'mortal' is given in @fig-syllogism-interpretation.
+
+:::{#fig-syllogism-interpretation}
+
+![](/static/images/syllogism-interpretation.svg){width=450 fig-align="center" fig-alt="Set Operations"}
+
+An interpretation $\si$ of the non-logical terms 'Socrates', 'man', and 'mortal'.
+:::
+
+It remains to specify the semantic rules by which an interpretation of the non-logical elements of the syntax determines a truth valuation of the language.
+Let $a$ be any proper name and let $P$ and $Q$ be common nouns.
+A sentence of the form '$a$ is $P$' is true just in case the object signified by $a$ belongs to the set of objects to which the property signified by $P$ applies.
+This condition may be summarized by the following semantic rule:
+
+$$
+val^\si(a\textrm{ is }P) = \left\{\begin{array}{ll} \true & \textrm{if }\si(a)\in\si(P) \\
+             \false     & \textrm{otherwise}\end{array}\right.
+$$
+
+Similarly, a sentence of the form 'Every $P$ is $Q$' is true just in case every object to which the property signified by $P$ applies is an object to which the property signified by $Q$ also applies, in other words:
+$$
+  val^\si(\textrm{Every }P\textrm{ is }Q) = \left\{\begin{array}{ll} \true & \textrm{if }\si(P)\subset\si(Q) \\
+             \false     & \textrm{otherwise}\end{array}\right.
+$$ 
+To assess the validity of the argument in question we ask: is there a possible interpretation of the language under which both of the premises are true, but the conclusion false?
+To see that the answer to this question is no, consider any interpretation $\si$ under which both of the premises are true, i.e.:
+$$
+val^\si(\textrm{Socrates is a man}) = val^\si(\textrm{Every man is mortal}) = \true
+$$
+
+By the above two semantic rules, it follows that both $\si(\textrm{Socrates})\in\si(\textrm{man})$ and $\si(\textrm{man})\subset\si(\textrm{mortal})$.
+But this implies that $\si(\textrm{Socrates})\in\si(\textrm{mortal})$.
+Thus, by the first of our two semantic rules, the conclusion of the argument---Socrates is mortal---is true under the interpretation $\si$ as well, i.e.:
+$$
+val^\si(\textrm{Socrates is mortal}) = \true
+$$
+So, the argument is valid.
+(Before moving on, pause for a moment to think about how well this proof of the argument's validity captures your informal intuition as to why the argument is valid.)
+
+In addition to validity, there are a few other important semantic notions that can be defined in terms of the general notion of truth under an interpretation.
+
+::: {#def-logical-truth} 
+
+A sentence $\ph$ is _logically true_ if $val^\si(\ph)=\true$, for all interpretations $\si$.
+A sentence $\ph$ is _logically false_ if $val^\si(\ph)=\false$, for all interpretations $\si$.
+Two sentences $\ph$ and $\psi$ are _logically equivalent_ if $val^\sigma(\ph)=val^\sigma(\psi)$, for all interpretations $\sigma$.
+To indicate that $\ph$ and $\psi$ are logically equivalent we write $\ph\equiv\psi$.
+
+:::
+
+::: {#exr-semantic-notions .exercise}
+{{< include /exercises/semantic-notions.qmd >}}
+:::
+
+::: {#exm-0x1-semantics .example}
+{{< include /inserts/examples/0s-x-1s/semantics.qmd >}}
+
+::: {#exr-0x1-expressive-power .exercise}
+{{< include /exercises/0x1-expressive-power.qmd >}}
+::: 
+:::
+
+## Proofs {#sec-argument-validity-proof-proofs}
+
+A method of reasoning is any method or procedure by which one proposes to assess the validity of an argument.
+Given the definition of validity offered in the previous section, it may be thought that the most direct method of reasoning consists in evaluating the truth values of the sentences comprising that argument under all the possible interpretations of the language.
+Having done so, one can then conclude that the argument is valid just in case no interpretation is found under which all of the premises are true and the conclusion false.
+
+While the correctness of this procedure follows immediately from our definition of argumentative validity, it clearly does not represent the way in which reasoning ordinarily proceeds.
+Take, for example, the arithmetical argument:
+
+$$
+x + 2y = -2, y > 1 \proves 8 < -2x
+$$
+
+When we assess this argument arithmetically, we stipulate that its validity is to be assessed relative to the ordinary semantics for arithmetic.
+This means that the numerals '1', '2' and '8' refer to the numbers 1, 2 and 8, respectively; the symbol '+' denotes the operation of addition; and the symbols '=', '<' and '>' stand for the relations of equality, being less than, and being greater than, respectively.
+These are the logical elements of the syntax appearing in the argument.
+The non-logical elements are the variables $x$ and $y$, which may stand for any numbers.
+The argument is valid just in case no matter what numbers the variables $x$ and $y$ stand for: if it is true that $x+2y=-2$ and $y>1$, then it is also true that $8<-2x$.
+
+Of course, if one were charged with the task of assessing the validity of this argument---say, in a mathematics class---one would most certainly _not_ proceed by substituting in particular numerical values for $x$ and $y$ in an effort to ascertain whether or not there exists a particular interpretation of these variables under which the premises of the argument are true and its conclusion false.
+For one, there are, infinitely many such intepretations.
+Instead, to assess this argument's validity, a more feasible approach would be to attempt to _derive_ the conclusion from the premises using the basic rules of algebra.
+
+In the typical language in which algebraic derivations are expressed, a demonstration of this argument's validity could take the following form:
+
+:::{.proof}
+Since $y>1$, it follows that $2y>2$ and therefore that $x+2y>x+2$.
+But since $x+2y=-2$, we have:
+$$
+  - 2 > x + 2
+$$
+Subtracting $2$ from both sides of the above inequality gives us:
+$$
+  - 4 > x
+$$
+Multiplying both sides of this inequality by $-2$ yields $8 < - 2x$, which is the desired conclusion.
+:::
+
+Taking this example as our model, when we speak of a method of reasoning, we will henceforth have in mind methods which employ as a standard for argumentative validity the existence or non-existence of a derivation---or proof---of an argument's conclusion from its premises.
+In order to make precise this idea we must begin by formulating in mathematically precise terms what we mean by a _proof_.
+
+To begin, let us reconsider the above algebraic derivation and try to express the reasoning in slightly more detail.
+In the abbreviated form of the proof given above, the algebraic rules that we appealed to were left tacit and a number of intermediate steps skipped over.
+To bring out these steps, let us, for the sake of illustration, impose strict constraints on what we are allowed to take for granted in the reasoning.
+In particular, we will assume only that:
+
+1. Given any two numbers, we are able to judge which of the two is the greater---and so judge true such simple inequalities as $4>2$ and $-3>-6$.
+
+2. We are able to evaluate simple arithmetical expressions---and so judge true such simple equalities as $2+3=5$ and $-2\cdot 3 = -6$.
+
+Every other law or principle appealed to in the reasoning must be stated explicitly.
+To carry out the proof we will need to appeal to the following rules of algebraic reasoning.
+For any numerical expressions $\alpha$, $\beta$, $\gamma$:
+
+R1: If $\alpha>0$ and $\beta>\gamma$, then $\alpha\beta>\alpha\gamma$.
+
+R2: If $\alpha<0$ and $\beta>\gamma$, then $\alpha\beta<\alpha\gamma$.
+
+R3: If $\alpha>\beta$, then both $\gamma +\alpha>\gamma+\beta$ and $\alpha+\gamma>\beta +\gamma$.
+
+R4: $\alpha+0=\alpha$
+
+R5:
+    If $\psi$ is the result of substituting $\beta$ for $\alpha$ in $\ph$, then from $\alpha=\beta$ and $\ph$, one may infer $\psi$.
+
+Utilizing these principles, the more detailed formulation of the reasoning involved in the above proof is as follows:
+
+1. Since $2>0$ and (by assumption) $y>1$, it follows by R1 that $2y>2\cdot 1$.
+
+2. Since $2\cdot 1=2$ and (by 1) $2y>2\cdot 1$, it follows by R5 that $2y>2$.
+
+3. Since (by 2) $2y>2$, it follows by R3 that $x+2y>x+2$.
+
+4. Since (by assumption) $x+2y=-2$ and (by 3) $x+2y>x+2$, it follows by R5 that $-2>x+2$.
+
+5. Since (by 4) $-2>x+2$, it follows by R3 that $-2+(-2)>x+2+(-2)$.
+
+6. Since $-2+(-2)=-4$ and (by 5) $-2+(-2)>x+2+(-2)$, it follows by R5 that $-4>x+2+(-2)$.
+
+7. Since $2+(-2)=0$ and (by 6) $-4>x+2+(-2)$, it follows by R5 that $-4>x+0$.
+
+8. Since (by R4) $x+0=x$ and (by 7) $-4>x+0$, it follows by R5 that $-4>x$.
+
+9. Since $-2<0$ and (by 8) $-4>x$, it follows by R2 that $-2\cdot -4<-2x$.
+
+10. Since $-2\cdot -4=8$ and (by 9) $-2\cdot -4<-2x$, it follows by R5 that $8<-2x$.
+
+What is important to note about this proof is that all of the claims that are asserted in the course of the reasoning fall into one of the following three categories:
+
+i. Premises of the argument (e.g., $x+2y=-2$).
+
+ii. Elementary facts of arithmetic (e.g., $2>0$ or $-2\cdot -4=8$).
+
+iii. The result of applying one of the principles R1--R5 to claims already established in the proof.
+
+This can be emphasized by omitting from the proof such inferential markers as 'since $\ldots$ it follows that $\smallblank$', etc. and instead simply listing the claims that are asserted in the proof one after another in sequence, indicating, for each such claim, into which of the above three categories it falls:
+
+:::{.lproof}
+    1. 2 > 0                    [Arithmetic]
+    2. y > 1                    [Premise]
+    3. 2y > 2\cdot 1            [R1: 1, 2]
+    4. 2\cdot 1 = 2             [Arithmetic]
+    5. 2y > 2                   [R5: 4, 3]
+    6. x + 2y > x + 2           [R3: 5]
+    7. x + 2y = -2              [Premise]
+    8. -2 > x + 1               [R5: 7, 6]
+    9. -2 + (-2) > x + 2 + (-2) [R3: 8]
+    10. -2 + (-2) = -4          [Arithmetic]
+    11. -4 > x + 2 + (-2)       [R5: 10, 9]
+    12. 2 + (-2) = 0            [Arithmetic]
+    13. -4 > x + 0              [R5: 12, 11]
+    14. x + 0 = x               [R4]
+    15. -4 > x                  [R5: 14, 13]
+    16. -2 < 0                  [Arithmetic]
+    17. -2\cdot -4 < -2x        [R2: 16, 15]
+    18. -2\cdot -4 = 8          [Arithmetic]
+    19. 8 < -2x                 [R5: 18, 17]
+:::
+
+We will take this expanded arithmetical derivation as a model for the simplest sort of proofs that we will consider in the context of our formal languages.
+Later on in the course, we will consider other kinds of proofs with a more complicated structure.
+
+We first observe that a proof of the above sort is always given relative to both a set of elementary, or axiomatic, truths, which we can freely take for granted in our reasoning, and a system of rules by which we can derive new sentences from sentences already established in the proof.
+Taken together, these axioms and rules form what we shall call a proof system:
+
+::: {#def-proof-system .definition} 
+
+A _proof system_ for a language $L$ consists of (i) a set of sentences of $L$, the members of which are referred to as _axioms_; and (ii) a set of rules of inference, each of which states that certain sentences can be inferred from others.
+
+:::
+
+We can now define what we mean by a proof:
+
+::: {#def-proof .definition}
+
+Let $\mathbf{D}$ be a proof system for the language $L$.
+Let $\Ga$ be a set of sentences of $L$ and let $\ph$ be a sentence of $L$.
+A _proof_ of $\ph$ from $\Ga$ in $\mathbf{D}$ is a finite sequence of sentences $\ph_1,\ph_2,\ldots,\ph_n$ such that:
+
+1. $\ph_n$ is the sentence $\ph$.
+
+2. For $i=1,\ldots,n$, at least one of the following conditions holds:
+
+    i. $\ph_i\in\Ga$
+
+    ii. $\ph_i$ is an axiom of $\mathbf{D}$
+
+    iii. $\ph_i$ follows from one of the rules of $\mathbf{D}$ applied to sentences among $\ph_1,\ldots,\ph_{i-1}$.
+
+We write $\Ga\proves_{\mathbf{D}}\ph$ to indicate that there exists a proof of $\ph$ from $\Ga$ in $\mathbf{D}$.
+In this case, we also say that $\ph$ is _provable_ from $\Ga$ in $\mathbf{D}$ or that the argument $\Ga\proves\ph$ is _provable_ in $\mathbf{D}$, or that $\ph$ is a _deductive consequence_ of $\Ga$ in $\mathbf{D}$.
+
+:::
+
+It is important to stress that this definition of proof makes no reference whatsoever to the various semantic notions introduced in @sec-argument-validity-proof-validity.
+Concepts such as truth and falsehood, meaning, interpretation, etc., nowhere figure in our formal understanding of proof.
+Rather, a proof is a purely syntactic construct, which can be thought of as the output of an abstract calculus which operates on symbolic expressions in complete ignorance as to how they are to interpreted.
+As such, the standard of provability is, at a conceptual level, entirely distinct from that of validity.
+The former is syntactic, the latter semantic.
+It will be crucial to keep this distinction in mind as we proceed.
+
+Henceforth, by a 'method of reasoning' we will simply mean a system of proof.
+To say that an inference can result from a given method of reasoning is just to say that the conclusion of the corresponding argument is provable from its premises in the relevant proof system.
+It might be supposed that this notion of proof is sufficiently abstract that it entails nothing of substance concerning which arguments are provable and which are not.
+Not so.
+Already we have said enough to ensure that provability satisfies the same general claims that were shown to hold of validity in @thm-semantic-structure.
+
+:::{#thm-proof-structure .theorem}
+Let $\mathbf{D}$ be any proof system.
+For any sentences $\ph, \psi$ and any sets of sentences $\Ga, \De$, the following claims hold:
+
+i. $\Ga,\ph\proves_{\mathbf{D}}\ph$
+
+ii. If $\Ga\proves_{\mathbf{D}}\ph$, then $\Ga,\De\proves_{\mathbf{D}}\ph$.
+
+iii. If $\Ga,\ph\proves_{\mathbf{D}}\psi$ and $\De\proves_{\mathbf{D}}\ph$, then $\Ga,\De\proves_{\mathbf{D}}\psi$.
+:::
+
+We leave the proof of this theorem as an exercise for the reader.
+
+Some standard proof-theoretic terminology: if a sentence is provable from the empty set in a given proof system, we refer to it as a _theorem_ of that system.
+If two sentences are each provable from the other, we refer to them as _provably equivalent_.
+
+:::{#exr-proof-structure}
+{{< include /exercises/proof-structure.qmd >}}
+:::
+
+:::{#exm-0x1-proof .example}
+{{< include /inserts/examples/0s-x-1s/proof.qmd >}}
+
+:::{#exr-proofs-in-T}
+{{< include /exercises/proofs-in-T.qmd >}}
+:::
+::: 
+
+## Soundness and Completeness {#sec-argument-validity-proof-soundness-and-completeness}
+
+We have now completed the three tasks involved in formalizing the central notions of logic that we set for ourselves at the beginning of this chapter.
+Accordingly, we are now in a position to express the two questions that we raised there in purely mathematical terms.
+These questions, recall, were:
+
+1. Is a given method of reasoning such as to result in only valid inferences or, by employing that method, can one sometimes be led to draw invalid inferences as well?
+
+2. Are there some valid inferences in a given domain which, in principle, cannot result from applying a given method of reasoning, or are all such inferences invalid?
+
+Having made mathematically precise the various notions implicated in these questions, we can interpret them in strictly mathematical terms.
+When we ask, for example, 'does a given method of reasoning ever lead to invalid inferences?', we are asking of a given proof system whether it is possible for a sentence $\ph$ to be provable from $\Gamma$ in that system, despite the fact that $\ph$ is not a logical consequence of $\Gamma$.
+We refer to the property of a proof system which denies this possibility as soundness.
+
+:::{#def-soundness data-re="sound" data-flags="gi"}
+A proof system $\mathbf{D}$ is _sound_ if, for any set of sentences $\Gamma$ and any sentence $\ph$: if $\Gamma\proves_\mathbf{D} \ph$, then $\Gamma\models \ph$.
+:::
+
+Conversely, when we ask 'do there exist valid inferences which cannot result from a given method of reasoning?', we are asking of a given proof system whether it is possible for a sentence $\ph$ to be a logical consequence of $\Gamma$ despite the fact that $\ph$ is not provable from $\Gamma$ in that system.
+The property which denies this possibility is referred to as _completeness_.
+
+:::{#def-completeness data-re="completeness" data-flags="gi"} 
+A proof system $\mathbf{D}$ is _complete_ if, for any set of sentences $\Gamma$ and any sentence $\ph$: if $\Gamma\models \ph$, then $\Gamma\proves_\mathbf{D}\ph$.
+:::
+
+Taken together, the soundness and completeness of a proof system means that an argument is valid if and only if its conclusion is provable in that system from its premises.
+When we have shown this, we know that the proof system codifies exactly the system of inferences validated by the intended meanings of the logical elements of the syntax.
+Thus, when we reason by giving proofs in this system, we can be sure that, in so doing, there is no principled threat of error or omission.[^Godel]
+
+[^Godel]: The existence of a sound and complete proof system for first-order quantificational logic was proven by Kurt Gödel in his doctoral dissertation of 1929.
+This is often regarded as one of the first foundational results in mathematical logic.
+
+In upcoming chapters, we will be studying proof systems across a wide variety of syntactic and semantic contexts and we will show that these systems are both sound and complete.
+In the course of doing so, it will quickly become evident that there exists a stark asymmetry in the relative difficulty of these two tasks.
+To show that a proof system is sound is, in general, a rather easy task, but to show that it is complete is often quite difficult and requires some degree of mathematical ingenuity.
+Why this asymmetry?
+
+The soundness of a proof system $\mathbf{D}$ asserts that, for any arbitrary set of sentences $\Ga$, every sentence that is a deductive consequence of $\Ga$ in $\mathbf{D}$ is a logical consequence of $\Ga$.
+Completeness, on the other hand, asserts that every logical consequence of $\Ga$ is a deductive consequence of $\Ga$.
+The relative ease with which soundness results can be proven when compared to completeness results is owing to the fact that, unlike the set of all logical consequences of $\Ga$, that is:
+$$
+\{\ph: \Ga\models\ph\}
+$$
+the set of all deductive consequences of $\Ga$:
+$$
+\{\ph: \Ga\proves_{\mathbf{D}}\ph\}
+$$
+can be given a straightforward inductive definition, as follows:
+
+1. If $\ph\in\Ga$, then $\Ga\proves_\mathbf{D}\ph$.
+
+2. If $\ph$ is an axiom of $\mathbf{D}$, then $\Ga\proves_\mathbf{D}\ph$.
+
+3. If $\Ga\proves_\mathbf{D}\ph_i$, for $i=1,\ldots,n$, and $\psi$ follows from $\ph_1,\ldots,\ph_n$ by some rule of inference of $\mathbf{D}$, then $\Ga\proves_\mathbf{D}\psi$.
+
+<!-- TODO: Add exercise on converting trees to proofs -->
+
+Accordingly, the soundness of a proof system can generally be established by the method of [proof by induction](@sec-induction-proof-by-induction).
+To establish soundness we must show that every sentence in the set $\{\ph: \Ga\proves_{\mathbf{D}}\ph\}$ has the property of being a logical consequence of $\Ga$.
+Appealing to the above inductive definition of this set, it suffices to show:
+
+1. If $\ph\in\Ga$, then $\Ga\models\ph$.
+
+2. If $\ph$ is an axiom of $\mathbf{D}$, then $\Ga\models\ph$.
+
+3. If $\Ga\models\ph_i$, for $i=1,\ldots,n$, and $\psi$ follows from $\ph_1,\ldots,\ph_n$ by some rule of inference of $\mathbf{D}$, then $\Ga\models\psi$.
+
+Clause 1 is a direct consequence of our definition of validity, and so may be taken for granted---see @thm-semantic-structure.(i).
+Moreover, it suffices to establish clause 3 to show that if $\psi$ follows from $\ph_1,\ldots,\ph_n$, by some rule of inference of $\mathbf{D}$, then:
+$$
+\ph_1,\ldots,\ph_n\models\psi
+$$
+
+For, if $\Ga\models\ph_i$, for $i=1,\ldots,n$, by repeated applications of @thm-semantic-structure.(iii), it follows that $\Ga\models\psi$.
+
+Hence, to establish the soundness of a proof system $\mathbf{D}$ it suffices to show:
+
+1. If $\ph$ is an axiom of $\mathbf{D}$, then $\Ga\models\ph$.
+
+2. If $\psi$ follows from $\ph_1,\ldots,\ph_n$ by some rule of inference of $\mathbf{D}$, then $\ph_1,\ldots,\ph_n\models\psi$.
+
+This simple strategy for establishing soundness is available because the idea of a proof is itself inductive in nature: proofs are built up from the axioms and premises of an argument through the repeated application of the rules of inference.
+The idea of validity, by contrast, is not inductive.
+The valid arguments are not built up recursively, but are rather defined, in negative existential terms, as those arguments which lack a semantic counterexample.
+As such, there is no obvious way to establish the completeness of a proof system by the method of induction.
+As we shall see in upcoming chapters, completeness results require a defter touch.
+
+:::{#exr-relative-soundness-completeness .exercise}
+{{< include /exercises/relative-soundness-completeness.qmd >}}
+:::
+
+:::{#exm-0x1-soundness-completeness .example}
+{{< include /inserts/examples/0s-x-1s/soundness-completeness.qmd >}}
+:::
+
+## References {#sec-argument-validity-proof-references-unnumbered .unnumbered}

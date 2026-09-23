@@ -1,0 +1,11 @@
+# Private solutions repo, cloned in here -- never committed to this
+# public repo. See README.md for how to populate it.
+/solutions/
+
+# Quarto build artifacts
+/_book/
+/.quarto/
+/*_files/
+
+# OS junk
+.DS_Store

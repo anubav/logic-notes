@@ -1,0 +1,31 @@
+name: Check formatting
+
+# The backstop for the pre-commit hook: catches anyone who committed
+# without it installed, bypassed it with --no-verify, or edited the
+# repo through some path other than a local git client entirely (e.g.
+# GitHub's web editor).
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+jobs:
+  check-format:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.x'
+
+      - name: Check .qmd formatting
+        run: |
+          mapfile -t files < <(git ls-files | grep -E \
+            '^(chapters|appendices|content/exercises|content/inserts)/.*\.qmd$')
+          if [ "${#files[@]}" -eq 0 ]; then
+            echo "No matching .qmd files found."
+            exit 0
+          fi
+          python3 chapter_tools.py --check "${files[@]}"

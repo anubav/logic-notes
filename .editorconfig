@@ -1,0 +1,21 @@
+root = true
+
+[*]
+charset = utf-8
+end_of_line = lf
+insert_final_newline = true
+trim_trailing_whitespace = true
+indent_style = space
+indent_size = 2
+
+# .qmd files: trailing whitespace can be meaningful (a trailing double-
+# space forces a Markdown hard line break, and .lproof content preserves
+# exact source formatting), so never let an editor auto-trim it here.
+# The chapter_tools.py reflow tool -- not the editor -- is the source of
+# truth for whitespace in these files.
+[*.qmd]
+trim_trailing_whitespace = false
+indent_size = 4
+
+[*.yml]
+indent_size = 2

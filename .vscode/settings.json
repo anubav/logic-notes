@@ -1,0 +1,42 @@
+{
+  // Prevent generic formatters (Prettier, etc.) from ever reformatting
+  // course-notes source files. .lproof blocks, hanging-indent lists, and
+  // semantic linebreaks all depend on exact whitespace that a
+  // general-purpose Markdown formatter doesn't know is load-bearing.
+  // The project's own reflow tool (chapter_tools.py) is the only thing
+  // that should ever reformat these files.
+  "[quarto]": {
+    "editor.defaultFormatter": null,
+    "editor.formatOnSave": false,
+    "editor.wordWrap": "on"
+  },
+  "[markdown]": {
+    "editor.defaultFormatter": null,
+    "editor.formatOnSave": false,
+    "editor.wordWrap": "on"
+  },
+
+  "files.associations": {
+    "*.qmd": "quarto"
+  },
+
+  // Soft-wrap long lines for on-screen readability without touching the
+  // file's actual line breaks -- safe regardless of whether a given
+  // file uses column-wrap or semantic-linebreak formatting.
+  "editor.wordWrap": "on",
+
+  // On every save, reflow the file into semantic-linebreak form (one
+  // sentence per line) using the project's own tool -- this is what
+  // keeps hand-edited chapters/exercises consistently formatted without
+  // anyone needing to remember to run anything manually. Scoped to the
+  // content directories that actually hold master-repo prose, so it
+  // never touches generated files (e.g. a rendered _book/ output).
+  "emeraldwalk.runonsave": {
+    "commands": [
+      {
+        "match": "(chapters|appendices|content/exercises|content/inserts)/.*\\.qmd$",
+        "cmd": "python3 ${workspaceFolder}/chapter_tools.py ${file}"
+      }
+    ]
+  }
+}

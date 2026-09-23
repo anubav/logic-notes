@@ -1,0 +1,148 @@
+/* CSS Variables */
+$proof-width: 100%;
+$proof-line-height: 30px;
+$proof-margin-bottom: 20px;
+
+$proof-line-background-hl-color: whitesmoke;
+$proof-line-background-hl-transition: 0.1s linear;
+$ellipses-line-padding: 3px;
+
+$line-number-width: 15%;
+$line-number-padding: 25px;
+$line-number-marker: ".";
+
+$level-marker: 1px solid black;
+$level-indent-width: 20px;
+
+$formula-font-size: 90%;
+$formula-padding-left: 17px;
+$ellipses-formula-padding-left: 15px;
+$formula-padding-bottom: 0px;
+
+$justification-width: 35%;
+$justification-font-size: 90%;
+$justification-padding-left: 17px;
+$justification-padding-bottom: 0px;
+
+$hypothesis-marker-height: 0.7;
+$hypothesis-marker-width: 40px;
+
+$primary-hl-color: lightgray;
+$primary-hl-weight: normal;
+$secondary-hl-color: whitesmoke;
+
+// proof container
+.lproof {
+  display: grid;
+  grid-auto-rows: $proof-line-height;
+  margin: auto;
+  margin-bottom: $proof-margin-bottom;
+  width: $proof-width;
+
+  // line in a proof
+  .proof-line {
+    display: grid;
+    grid-template-rows: [line-top] 1fr [line-bottom];
+    grid-template-columns:
+      [line-start] $line-number-width
+      [formula-start] 1fr [formula-end] $justification-width [line-end];
+
+    .proof-formula {
+      grid-column: formula-start / formula-end;
+      grid-row: line-top / line-bottom;
+      font-size: $formula-font-size;
+      padding-left: $formula-padding-left;
+      padding-bottom: $formula-padding-bottom;
+      align-self: end;
+    }
+
+    .proof-justification {
+      grid-column: formula-end / line-end;
+      grid-row: line-top / line-bottom;
+      font-size: $justification-font-size;
+      padding-left: $justification-padding-left;
+      padding-bottom: $justification-padding-bottom;
+      align-self: end;
+    }
+
+    .hypothesis-marker {
+      grid-column-start: formula-start;
+      grid-row-end: line-bottom;
+      align-self: end;
+      border-left: $level-marker;
+      border-bottom: $level-marker;
+      height: $hypothesis-marker-height * $proof-line-height;
+      width: $hypothesis-marker-width;
+    }
+
+    .subproof-marker {
+      grid-column: formula-start / formula-end;
+      grid-row: line-top / line-bottom;
+      align-self: end;
+      border-left: $level-marker;
+      height: $proof-line-height + 2px;
+    }
+
+    .line-number {
+      justify-self: end;
+      align-self: end;
+      padding-right: $line-number-padding;
+
+      &::after {
+        content: $line-number-marker;
+      }
+    }
+
+    .level-marker {
+      border-left: $level-marker;
+    }
+  }
+
+  .proof-line[data-ellipses="true"] {
+    @extend .proof-line;
+    grid-template-rows: [line-top] $proof-line-height [line-bottom];
+    padding-top: $ellipses-line-padding;
+    padding-bottom: $ellipses-line-padding;
+
+    .line-number {
+      justify-self: end;
+      align-self: center;
+      padding-bottom: 5px;
+      padding-right: $line-number-padding + 7px;
+
+      &::after {
+        content: "";
+      }
+    }
+
+    .proof-formula {
+      grid-column: formula-start / formula-end;
+      grid-row: line-top / line-bottom;
+      font-size: 100%;
+      padding-left: $ellipses-formula-padding-left;
+      justify-self: center;
+      align-self: center;
+    }
+  }
+
+  @for $i from 2 through 10 {
+    .proof-line[data-depth="#{$i}"] {
+      @extend .proof-line;
+      grid-template-columns:
+        [line-start] $line-number-width
+        repeat(#{$i - 1}, $level-indent-width)
+        [formula-start] 1fr [formula-end] $justification-width [line-end];
+    }
+  }
+
+  .hl-primary {
+    background-color: $primary-hl-color;
+    font-weight: $primary-hl-weight;
+    transition: background-color 0.1s linear;
+  }
+
+  .hl-secondary {
+    background-color: $secondary-hl-color;
+    transition: background-color 0.1s linear;
+  }
+}

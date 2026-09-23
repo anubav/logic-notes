@@ -1,0 +1,39 @@
+project:
+  type: book
+
+book:
+  title: Introduction to Logic
+  author: Anubav Vasudevan
+  comments:
+    hypothesis: true
+  page-navigation: true
+  back-to-top-navigation: true
+
+  chapters:
+    - index.qmd
+    - chapters/01-argument-validity-proof.qmd
+    - chapters/02-syllogistic-logic.qmd
+    - chapters/03-propositional-logic.qmd
+  appendices:
+    - appendices/A-general-notation.qmd
+    - appendices/B-induction.qmd
+
+  sidebar:
+    style: "floating"
+    border: true
+    collapse-level: 1
+
+filters:
+  - lproof
+
+format:
+  html:
+    theme: flatly
+    css:
+      - assets/styles/fonts.css
+      - assets/styles/environments.css
+      - assets/styles/tweaks.css
+      - assets/styles/custom.css
+    toc: true
+    include-in-header:
+      - assets/includes/scripts.html

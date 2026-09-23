@@ -1,0 +1,934 @@
+---
+bibliography: "syllogistic-logic.bib"
+number-sections: true
+crossref: 
+    chapters: true
+---
+
+{{< include /assets/macros/macros.qmd >}}
+
+# Syllogistic Logic {#sec-syllogistic-logic .chapter}
+
+## Introduction {#sec-syllogistic-logic-introduction}
+
+It is impossible to overstate the influence of Aristotle's theory of the syllogism on the study of formal logic.
+Not only did it mark the first significant contribution to the field, but it was the starting point for nearly all subsequent investigations into logic for over two millenia.[^aristotle]  Indeed, throughout much of the history of logic---and even still today, albeit only colloquially---the phrases 'valid argument' and 'syllogism' were treated as synonymous.
+
+The core of Aristotle's logic is presented in the opening chapters of his _Prior Analytics_, written around 350 BCE.[^prior-analytics] There, Aristotle develops a system of logic designed to capture the inferential relations that obtain between propositions of the following form:
+
+[^aristotle]: Immanuel Kant pronounced, in the preface to the 1787 second edition of his _Critique of Pure Reason_, that "since the time of Aristotle, [logic] has not had to go a single step backwards, unless we count the abolition of a few dispensible subtleties or the more distinct determination of its presentation...
+What is further remarkable about logic is that until now it has also been unable to take a single step forward, and therefore seems to all appearance to be finished and complete" (@Kant1999-pr, p. 106).
+
+[^prior-analytics]: For a summary of the _Prior Analytics_, including a reconstruction of Aristotle's proof system, see the introduction to @Smith1989-gf and @Malink2013-kc, part I.
+
+$$
+\begin{align*}
+&\textrm{Every $A$ is $B$}\\
+&\textrm{No $A$ is $B$}\\
+&\textrm{Some $A$ is $B$}\\
+&\textrm{Some $A$ is not $B$}
+\end{align*}
+$$
+
+In this chapter, we will introduce a formal language in which to represent arguments of syllogistic logic, a semantic framework in which to assess their validity, and a proof system for this language in which to carry out reasoning.
+We will then proceed to show that this proof system is both sound and complete.
+Along the way, we will have occasion to revisit the simple notion of proof introduced in the previous chapter, generalizing it so as to allow for so-called hypothetical methods of proof, such as the method of _reductio ad absurdum_, or proof by contradiction.
+
+## The Syntax and Semantics of Syllogistic Logic {#sec-syllogistic-logic-the-syntax-and-semantics-of-syllogistic-logic}
+
+### The Language $\Ls$
+
+We begin by defining a formal language for syllogistic logic, which we will refer to as $\Ls$.
+The alphabet for the language consists, first, of an infinite number of symbols:
+$$
+t_1, t_2, t_3, \ldots
+$$
+referred to as _terms_.
+In addition to the terms, the alphabet also includes the four special symbols:
+$$
+\acop, \ecop, \icop, \ocop
+$$
+referred to as _copulas_.
+
+:::{#def-categorical-sentence .definition}
+A _sentence of $\Ls$_ is any expression of the form:
+$$
+\cop{A}{B}
+$$
+where $A$ and $B$ are terms and $\ast$ is a copula.
+We refer to the sentences of $\Ls$ as _categorical_ sentences.[^categorical] In the categorical sentence $\cop{A}{B}$, the term $A$ is referred to as the _subject_ of the sentence and $B$ as its _predicate_.[^term-order]
+:::
+
+[^categorical]: While this is not Aristotle's own terminology, the description of the sentences of his syllogistic as 'categorical' was standard in antiquity (see @Malink2013-kc, p. 24).
+
+Categorical sentences of the form $\all{A}{B}$ and $\no{A}{B}$ are referred to as _universal_, those of the form $\some{A}{B}$ and $\somenot{A}{B}$ as _particular_, those of the form $\all{A}{B}$ and $\some{A}{B}$ as _affirmative_, and those of the form $\no{A}{B}$ and $\somenot{A}{B}$ as _negative_.
+When classifying sentences, these labels are often composed, with the designation of the sentence as either universal or particular (its 'quantity') preceding its designation as either affirmative or negative (its 'quality').
+Thus, for example, a sentence of the form $\all{A}{B}$ is a universal affirmative sentence, and one of the form $\somenot{A}{B}$ a particular negative sentence.[^copulas]
+
+[^copulas]: The Latin symbols $\acop$, $\ecop$, $\icop$, $\ocop$, as abbreviations for the copulas, were, of course, not employed by Aristotle.
+They were introduced in the 12th–13th‑centuries, by scholastic teachers of logic, who sought mnemonic aids for syllogistically valid argument forms.
+In the 13th century, William of Sherwood, in his _Introductiones in logicam_ (c.
+1240), introduced the terminology explicitly, extracting the symbols $\acop$ and $\icop$ from the latin _**a**ff**i**rmo_ ("I affirm") and $\ecop$ and $\ocop$ from _n**e**g**o**_ (“I deny”).
+His mnemonic explanation standardized the convention later adopted by Peter of Spain in his _Summulae logicales_, which made the notation canonical in scholastic logic teaching across Europe.
+
+[^term-order]: This reverses the traditional order of the terms.
+In Aristotle's original presentation, the predicate term of a sentence was written first and its subject term second.
+To form sentences, the two terms in this order were connected by copular phrases constructed from the verb 'to be predicated of' (κατηγορεῖται), as in "$A$ is predicated of every $B$" or "$A$ is not predicated of some $B$".
+
+### Extensional Semantics
+
+It remains a matter of some dispute as to the correct interpretation of the categorical sentences dealt with in Aristotle's logic.[^dictum-de-omni] However, one prominent reading of these sentences renders them as follows:
+
+$$
+\begin{align*}
+\all{A}{B} &\qquad\qquad\textrm{Every $A$ is $B$}\\
+\no{A}{B} &\qquad\qquad\textrm{No $A$ is $B$}\\
+\some{A}{B} &\qquad\qquad\textrm{Some $A$ is $B$}\\
+\somenot{A}{B} &\qquad\qquad\textrm{Some $A$ is not $B$}\\
+\end{align*}
+$$
+
+Here, terms like $A$ and $B$ are meant to stand for properties expressed by common noun phrases, such as that of being an animal, or that of being green.
+Thus, a universal negative sentence might express the claim that 'No humans are cold-blooded', and a particular affirmative proposition that 'Some animal is green'.
+Our semantics for the language $\Ls$ will adopt this reading of the sentences.
+
+[^dictum-de-omni]: Since Aristotle does not introduce an artificial, formal language in the _Prior Analytics_, but instead uses ordinary language constructions to express categorical sentences, he only rarely comments explicitly about the intended meanings of these sentences.
+One such explicit remark is the passage that scholars now refer to as the _dictum de omni et nullo_, in which Aristotle appears to state truth conditions for universal affirmative propositions (and, by analogy, universal negative ones).
+The passage states: "We use the expression 'predicated of every' when none of the subject can be taken of which the other term cannot be said, and we use 'predicated of none' likewise" (_Prior Analytics_, 24b28--30).
+
+The non-logical elements of the syntax are the terms.
+Recall that this means that the semantic values of the terms will vary from one interpretation of the language to the next.
+What are the possible semantic values assigned to the terms on a given interpretation?
+While it is again a matter for scholarly debate as to Aristotle's own intended interpretation of the terms, here we adopt the conventional approach of interpreting the terms 'extensionally'.
+The extension of a common noun phrase is the set of all individual objects denoted by that phrase.
+So, for example, the extension of the term 'cat' is the set of all cats, the extension of 'cold-blooded' the set of all cold-blooded creatures.[^intension] Thus, in an extensional semantics, a term will be interpreted as a set of objects, the members of which are all and only those objects denoted by the term.
+
+[^intension]: By contrast, the _intension_ of a common noun phrase is the meaning of the phrase, or that which determines its extension.
+Thus, for example, while 'human' and 'featherless biped' have the same extension since every human is a featherless biped and vice versa, they have different intensions since the two phrases differ in meaning.
+For a more detailed discussion of the distinction between extension and intension, see @Carnap1988-nm, ch. 1.
+
+But what exactly do we mean by an _object_?
+For semantics purposes, we need not specify what an object is.
+An object is simply a member of a certain set which serves as the background domain for our interpretations.
+It is customary to allow this domain of objects to vary, and to thus serve as a contextual parameter in our semantics.
+Fixing this parameter, fixes, in turn, the possible semantic values for the terms, and so precisely determines what it means to interpret the language.
+When the possible semantic values of the non-logical elements of the syntax exhibit this sort of context dependence, the term that logicians typically use for a specification of the background context, together with a context-specific interpretation of the language, is a _model_.
+
+:::{#def-model-S .definition}
+A _model_ of the language $\Ls$ is an ordered pair $(\W,\si)$, where $\W$ is a nonempty set, referred to as the _domain_ of the model, and $\si$ is a function which assigns to each term a nonempty subset of $\W$.
+:::
+
+:::{#fig-model-S}
+
+![](/static/images/syllogistic-model.svg){width=450 fig-align="center" fig-alt="Syllogistic model"}
+
+An extensional model of the language $\Ls$.
+:::
+
+Within a model, every term is assigned a specific semantic value, that is, a specific set of objects in the model's domain.
+To complete our specification of the semantics for the language, we must formulate a set of semantic rules which associate with each model $\M = (\W,\si)$ a specific truth valuation $val^\M$ that assigns $\true$ or $\false$ to every categorical sentence.
+These rules, which are meant to capture the intuitive meanings of the copulas $\acop$, $\ecop$, $\icop$, and $\ocop$, are as follows:
+
+1. $val^\M(\all{A}{B})=\true$ iff $\si(A)\subset \si(B)$
+
+2. $val^\M(\no{A}{B}) = \true$ iff $\si(A)\cap\si(B)=\emptyset$
+
+3. $val^\M(\some{A}{B}) = \true$ iff $\si(A)\cap\si(B) \neq \emptyset$
+
+4. $val^\M(\somenot{A}{B}) = \true$ iff $\si(A)-\si(B)\neq \emptyset$.
+
+To illustrate the application of these semantic rules, let $\M$ be the model partially specified in @fig-model-S above.
+On this model, we have, for example:
+
+$$
+\begin{align*}
+val^\M(\all{t_4}{t_{1}})=\true \\
+val^\M(\some{t_2}{t_{3}})=\false \\
+val^\M(\no{t_1}{t_{2}})=\false \\ 
+val^\M(\somenot{t_4}{t_{3}})=\true
+\end{align*}
+$$
+
+:::{#exr-square-of-opposition .exercise}
+{{< include /exercises/square-of-opposition.qmd >}}
+:::
+
+Argumentative validity is defined just as before: an argument in the language $\Ls$ is valid if and only if there is no model under which all of its premises are true and its conclusion false.
+
+:::{#def-validity-S .definition}
+The argument $\Ga\proves\ph$ is _valid_ if, for every model $\M$: if $val^\M(\psi)=\true$, for all $\psi\in\Ga$, then $val^\M(\ph)=\true$.
+In this case, we write $\Ga\models\ph$.
+:::
+
+To see how this standard of validity is applied, consider the argument:
+$$
+\some{A}{B}, \all{B}{C}\proves \some{A}{C}
+$$
+where $A$, $B$, and $C$ are any terms.
+To show that this argument is valid, we must confirm that, for every model, if the premises are all true, so too is the conclusion.
+Let $\M=(\W,\si)$ be a model such that $val^\M(\some{A}{B})=val^\M(\all{B}{C})=\true$.
+By our semantic rule for particular affirmative sentences, $val^\M(\some{A}{B})=\true$ iff $\si(A)\inter\si(B)\neq\emptyset$, and so, in this case, there exists some object $x\in\W$, such that $x\in\si(A)$ and $x\in\si(B)$.
+Now, by our semantic rule for universal affirmative sentences, $val^\M(\all{B}{C})=\true$ iff $\si(B)\subset\si(C)$.
+But this means that, for all $y\in \W$, if $y\in \si(B)$, then $y\in\si(C)$.
+In particular, this is true of $x$.
+So, $x\in \si(C)$.
+But then $\si(B)\inter\si(C)\neq \emptyset$ and so $val^\M(\some{A}{C})=\true$.
+Hence, the argument is valid, i.e.:
+$$
+\some{A}{B}, \all{B}{C}\models\some{A}{C}
+$$
+Aristotle referred to valid argument forms such as this as _syllogisms_.
+
+:::{#exr-syllogistic-figures .exercise}
+{{< include /exercises/syllogistic-figures.qmd >}}
+:::
+
+:::{#exm-smiley-multisets .example}
+{{< include /inserts/examples/smiley/multisets.qmd >}}
+::: 
+
+## Proofs in Syllogistic Logic {#sec-syllogistic-logic-proofs-in-syllogistic-logic}
+
+### Direct Proofs
+
+In the _Prior Analytics_, Aristotle draws a distinction between valid arguments which he regards as 'perfect' and those which he regards as imperfect.
+While the validity of perfect arguments is self-evident and requires no further justification, the validity of imperfect arguments stands in need of proof.
+To provide such proofs, Aristotle introduces a proof system by which imperfectly valid arguments can be derived by means of certain rules of inference.
+
+In what follows, we will present a version of Aristotle's proof system, which we refer to as $\S$.[^corcoran] Just like the proof systems introduced in Chapter 1, $\S$ includes both axioms and rules of inference by which certain sentences can be inferred from others.
+The axioms of the system are all sentences of the form:
+$$
+\all{A}{A}
+$$
+where $A$ is any term.
+The rules of inference of the proof system $\S$ are as follows:[^barbara]
+
+[^corcoran]:
+    The system $\S$ was first proposed as a formalization of Aristotle's theory of the syllogism by @Corcoran1972-wl.
+
+[^barbara]:
+    The names here given to the rules are taken from the following Latin poem created in the 13th century to help medieval logic students memorize the valid syllogistic forms:
+
+    > _Barbara, Celarent, Darii, Ferioque_ prioris (first);
+    > _Cesare, Camestres, Festino, Baroco_ secundae (second);
+    > Tertia (third) _Darapti, Disamis, Datisi, Felapton,_
+    > _Bocardo, Ferison_; Quartae (fourth) sunt _Bramantip, Camenes,_
+    > _Dimaris, Fesapo, Fresison_.
+
+    In the entry on "Traditional Logic" in @Brody2006-dz _Glossary of Logical Terms_, the key for the mnemonic employed in this poem is described as follows: "The three vowels respectively indicate the three constituent propositions of the syllogism as $\acop$, $\ecop$, $\icop$, or $\ocop$. For first-figure syllogisms the initial consonants are arbitrarily the first four consonants; for the other figures the initial consonants indicate to which of the first-figure syllogisms the syllogism in question may be reduced. Other consonants occurring in second-, third-, and fourth-figure mnemonics indicate the operation that must be performed on the proposition indicated by the preceding vowel in order to reduce the syllogism to a first-figure syllogism". 
+
+(Barbara):
+$$
+\frac{\all{A}{B}\qquad\all{B}{C}}{\all{A}{C}}
+$$
+
+(Celarent):
+$$
+\frac{\all{A}{B}\qquad\no{B}{C}}{\no{A}{C}}
+$$
+
+(e-conversion):
+$$
+\frac{\no{A}{B}}{\no{B}{A}}
+$$
+
+By means of these axioms and rules, we can give proofs of arguments in syllogistic logic.
+For example, we can show:
+$$
+\all{A}{B}, \all{B}{C}, \no{D}{C} \provess \no{D}{A}
+$$
+
+The proof is as follows:
+
+:::{.lproof}
+    1. A\textrm{\textbf{a}}B    [Premise]
+    2. B\textrm{\textbf{a}}C    [Premise]
+    3. A\textrm{\textbf{a}}C    [Barbara: 1, 2]
+    4. D\textrm{\textbf{e}}C    [Premise]
+    5. C\textrm{\textbf{e}}D    [e-conversion: 4]
+    6. A\textrm{\textbf{e}}D    [Celarent: 3, 5]
+    7. D\textrm{\textbf{e}}A    [e-conversion: 6]
+:::
+
+While the axioms and rules of inference listed above allow us to prove a number of arguments in syllogistic logic, taken together, the resulting proof system is clearly incomplete with respect to the extensional semantics introduced above.
+For instance, this system does not allow us to prove any non-circular arguments with a particular conclusion.
+For none of the axioms are particular sentences and none of the rules of inference license the inference of a particular sentence from other sentences.
+Thus, the only way that a particular sentence can appear in a proof, is if that sentence appears among the premises, that is, if the argument is circular.
+It is easy to verify, however, that there exist valid non-circular arguments with a particular conclusion, one example being the argument considered above:
+$$
+\some{A}{B}, \all{B}{C}\proves\some{A}{C}
+$$
+To enable the proof of such arguments, we could strengthen the system $\S$ by adding to it additional rules of inference.
+Perhaps surprisingly, however, this is not the primary approach adopted by Aristotle.
+To prove such arguments, Aristotle instead employs a new method of proof which he have not yet considered, the method of _reductio ad absurdum_ or proof by contradiction.
+To formalize proofs by contradiction, we have to revisit our original definition of a proof system and expand it so as to accommodate what we shall refer to as 'hypothetical' methods of proof.
+
+### Hypothetical Methods of Proof
+
+The proofs that we have considered so far have had a very simple structure.
+They have consisted of sequences of sentences, each of which is either an axiom, a premise, or the result of applying a rule of inference to sentences previously appearing in the proof.
+In such simple proofs, every claim put forward in the course of the reasoning is flatly asserted on the grounds of its being a logical consequence of the premises.
+In everyday reasoning, however, it is often convenient to posit a claim which we do not take ourselves to have established---and so do not wish to assert---but which instead serves as a supposition to be utilized indirectly in some hypothetical mode of reasoning.
+
+Consider, for example, the method of _reductio ad absurdum_, or proof by contradiction.
+When we give a proof by contradiction, we suppose that a certain claim is true for the sake of deriving a contradiction.
+Having done so, we then discharge our supposition and conclude that the claim that we supposed to be true is, in fact, false.
+In such proofs, we posit a claim and reason from it despite the fact that this claim has not been shown to follow from the premises.
+Instead the claim serves as a _hypothesis_, introduced for the specific purpose of deriving a contradiction.
+
+In syllogistic logic, the method of proof by contradiction can be implemented by appealing to the fact that for every categorical sentence there exists another categorical sentence which, on the extensional semantics introduced above, is its contradictory opposite (see @exr-square-of-opposition):
+
+:::{#def-contradictory .definition}
+The _contradictory_ of $\all{A}{B}$ is $\somenot{A}{B}$ and vice versa.
+The contradictory of $\no{A}{B}$ is $\some{A}{B}$ and vice versa.
+For any categorical sentence $\ph$, we write $\neg\ph$ for the contradictory of $\ph$.
+:::
+
+Note that the symbol '$\neg$' is not in the alphabet of the language $\Ls$.
+We introduce it here as a  metalinguistic device for referring to one sentence by means of another.
+Thus, for example, $\neg\some{A}{B}$ is not a new sentence of the language $\Ls$.
+It is simply another name for the sentence $\no{A}{B}$.
+
+Appealing to the notion of the contradictory of a sentence, we can describe the method of proof by contradiction as follows: (1) first, posit, as a hypothesis, a sentence $\ph$; (2) next, derive from this hypothesis, together with the premises, a contradictory pair of sentences of the form $\psi$ and $\neg\psi$; (3) finally, having done so, discharge the hypothesis, and conclude that the premises entail the contradictory of the hypothesis, $\neg\ph$.
+
+As an illustration of this procedure, let us see how one might try to utilize the method of proof by contradiction to establish the validity of the following argument:
+$$
+\somenot{A}{B}, \all{A}{C}\proves\somenot{C}{B}
+$$
+In accordance with the description of the method just given, we would like our proof system to license the following sort of reasoning:
+
+:::{.lproof}
+    1. C\textrm{\textbf{a}}B    [Hypothesis]
+    2. A\textrm{\textbf{a}}C    [Premise]
+    3. A\textrm{\textbf{a}}B    [Barbara: 1, 2]
+    4. A\textrm{\textbf{o}}B    [Premise]
+    5. C\textrm{\textbf{o}}B    [Contradiction: 3,4]
+:::
+
+Line 1 of this proof introduces $\all{C}{B}$ as a hypothesis; lines 2--4 deduce various consequences of this hypothesis in combination with the premises; lines 3 and 4 contain the desired contradiction; and line 5 concludes the proof by discharging the hypothesis and asserting its contradictory, which is the desired result.
+
+This, of course, is not a proof in the sense of the term specified in @def-proof, for $\all{C}{B}$ is neither a premise nor an axiom of the system.
+In the simple proofs that we have thus far considered, there is simply no mechanism for introducing a new hypothesis not included among the premises, nor for discharging that same hypothesis at some later stage of the reasoning.
+Consequently, there is no way of indicating that the hypothesis $\all{C}{B}$ is meant to be in effect in lines 1--4, but not in line 5.
+The most straightforward way of indicating this would be to state explicitly, in each line of the proof, the sentences which are being presupposed at that specific stage of the reasoning.
+Proofs would then not be sequences of sentences, but rather sequences of sentences each of which is asserted with respect to a given set of hypotheses.
+
+A natural way to model such proofs is as a sequence of arguments, where the premises of the argument appearing in this sequence indicate the hypotheses in effect at that stage of the reasoning.
+On this modeling, the above proof by contradiction can be rewritten as follows:
+
+:::{.lproof}
+    1. A\textrm{\textbf{o}}B, A\textrm{\textbf{a}}C, C\textrm{\textbf{a}}B \vdash C\textrm{\textbf{a}}B    [Hypothesis]
+    2. A\textrm{\textbf{o}}B, A\textrm{\textbf{a}}C, C\textrm{\textbf{a}}B \vdash A\textrm{\textbf{a}}C     [Premise]
+    3. A\textrm{\textbf{o}}B, A\textrm{\textbf{a}}C, C\textrm{\textbf{a}}B \vdash A\textrm{\textbf{a}}B    [Barbara: 1, 2]
+    4. A\textrm{\textbf{o}}B, A\textrm{\textbf{a}}C, C\textrm{\textbf{a}}B \vdash A\textrm{\textbf{o}}B    [Premise]
+    5. A\textrm{\textbf{o}}B, A\textrm{\textbf{a}}C \vdash C\textrm{\textbf{o}}B    [Contradiction: 3,4]
+:::
+
+This proof makes it clear that the hypothesis $\all{C}{B}$ is added to the premises in line 1, and that it is in effect through line 4, after which point it is discharged.
+Line 5 of the proof, which asserts that $\somenot{C}{B}$ follows from the premises, can now be viewed as the result of an inference from lines 3 and 4, which together state that from the hypothesis $\all{C}{B}$, in combination with the premises, a contradiction follows.
+
+The specific inference from lines 3 and 4 to line 5 is:
+
+$$
+\frac{\somenot{A}{B}, \all{A}{C}, \all{C}{B}\proves\all{A}{B} \qquad\qquad \somenot{A}{B}, \all{A}{C},\all{C}{B}\proves\somenot{A}{B}}{\somenot{A}{B}, \all{A}{C}\proves\somenot{C}{B}}
+$$
+
+This can be seen as an instance of the following general rule of inference which underwrites the method of proof by contradiction:
+
+(Contradiction):
+$$
+\frac{\Ga,\ph\proves\psi \qquad\qquad \Ga,\ph\proves\neg\psi}{\Ga\proves\neg\ph}
+$$
+
+Treating $\Ga$ as a set of background assumptions in effect throughout the entire proof, this rule states that if, on the assumption that $\ph$, one can derive a contradiction, one may conclude that $\neg\ph$.
+
+As this example illustrates, in order to license hypothetical methods of proof, such as proof by contradiction, our original notion of a proof system must be expanded so as to include not only simple rules of inference, whereby certain sentences can be directly inferred from others, but also 'hypothetical' rules of inference whereby certain arguments can be inferred from others.
+This expanded notion of a proof system can be defined as follows:
+
+:::{#def-hyp-proof-system .definition} 
+A _proof system_ for a formal language $L$ consists of (i) a set of sentences of $L$, the members of which are referred to as _axioms_; (ii) a set of _direct rules of inference_, each of which states that certain sentences can be inferred from others; and (iii) a set of _hypothetical rules of inference_, each of which states that certain arguments can be inferred from others.
+:::
+
+Consider again the proof by contradiction given above.
+In this proof, line 5 follows from lines 3 and 4 by the hypothetical rule (Contradiction).
+How do we justify lines 1--4?
+In the case of lines 1, 2, and 4, the answer is clear: the sentence asserted in each of these lines is among the hypotheses being presupposed at that stage of the reasoning.
+In other words, the arguments appearing in these lines are all of the form $\Ga\proves\ph$, where $\ph\in\Ga$.
+This, however, is not the case for line 3.
+In this case, $\all{A}{B}$ is intended to follow from $\all{A}{C}$ and $\all{C}{B}$, which are the conclusions of the arguments given in lines 1 and 2, by the direct rule of inference (Barbara).
+This raises the question of how direct rules of inference are to be applied not to sentences but to entire arguments.
+
+Suppose in a proof, one has established the arguments $\Ga\proves\all{A}{B}$ and $\De\proves\all{B}{C}$.
+In the context of this proof,  what hypotheses must be in effect in order to infer $\all{A}{C}$?
+Clearly, one can only infer this sentence if one posits _all_ of the sentences in both $\Ga$ and $\De$, for these are the sentences that are needed to establish both $\all{A}{B}$ and $\all{B}{C}$.
+Hence, the rule (Barbara), in this case, should license an inference from $\Ga\proves\all{A}{B}$ and $\De\proves\all{B}{C}$ to the argument $\Ga,\De\proves\all{A}{C}$.
+More generally, a direct rule of inference which asserts that the sentence $\ph$ follows from the sentences $\psi_1,\ldots,\psi_n$ licenses an inference from the arguments $\Ga_1\proves \psi_1,\ldots,\Ga_n\proves\psi_n$ to the argument $\Ga_1,\ldots,\Ga_n\proves\ph$.
+
+We are now in a position to define the more general notion of proof according to which the above sequence of arguments constitutes a proof.
+
+::: {#def-hyp-proof .definition}
+
+Let $\mathbf{D}$ be a proof system for the language $L$ (as defined in @def-hyp-proof-system).
+Let $\Ga$ be a set of sentences of $L$ and let $\ph$ be a sentence of $L$.
+A _proof_ of $\ph$ from $\Ga$ in $\mathbf{D}$ is a finite sequence of arguments $\Ga_1\proves\ph_1,\Ga_2\proves\ph_2,\ldots,\Ga_n\proves\ph_n$ such that:
+
+1. $\Ga_n\proves\ph_n$ is the argument $\Ga\proves\ph$.
+
+2. For $i=1,\ldots,n$, at least one of the following conditions holds:
+
+    i. $\ph_i\in\Ga_i$
+
+    ii. $\ph_i$ is an axiom of $\mathbf{D}$
+
+    iii. $\ph_i$ follows from one of the direct rules of $\mathbf{D}$ applied to sentences $\ph_{j_1},\ldots,\ph_{j_m}$ among $\ph_1,\ldots,\ph_{i-1}$ and:
+    $$
+    \Ga_i = \Ga_{j_1}\cup\cdots\cup\Ga_{j_m}
+    $$
+
+    iv. $\Ga_i\proves\ph_i$ follows from one of the hypothetical rules of $\mathbf{D}$ applied to arguments among $\Ga_1\proves\ph_1,\ldots,\Ga_{i-1}\proves\ph_{i-1}$.
+
+We write $\Ga\proves_{\mathbf{D}}\ph$ to indicate that there exists a proof of $\ph$ from $\Ga$ in $\mathbf{D}$.
+:::
+
+The following exercise confirms that the notion of proof specified in @def-hyp-proof is, indeed, a generalization of that specified in @def-proof.
+
+:::{#exr-proof-generalization .exercise}
+{{< include /exercises/proof-generalization.qmd >}}
+:::
+
+In addition to the three direct rules of inference, Barbara, Celarent, and e-conversion, the deductive system $\S$ also includes the following two hypothetical rules of inference:
+
+(Contradiction):
+$$
+\frac{\Ga,\ph\proves\psi \qquad\qquad \Ga,\ph\proves\neg\psi}{\Ga\proves\neg\ph}
+$$
+
+(Contrariety):
+$$
+\frac{\Ga,\ph\proves\all{A}{B} \qquad\qquad \Ga,\ph\proves\no{A}{B}}{\Ga\proves\neg\ph}
+$$
+
+:::{#exr-proofs-in-S .exercise}
+{{< include /exercises/proofs-in-S.qmd >}}
+:::
+
+:::{#exr-existential-import .exercise}
+{{< include /exercises/existential-import.qmd >}}
+::: 
+
+### Fitch Notation
+
+Consider the argument:
+
+$$
+\all{D}{B}, \somenot{A}{B}, \all{A}{C}\proves\somenot{C}{D}
+$$
+
+One strategy for proving this argument is to first establish, by means of a proof by contradiction, that $\somenot{C}{B}$ follows from the premises $\somenot{A}{B}$ and $\all{A}{C}$.
+One could then show, again using a proof by contradiction, that $\somenot{C}{D}$ follows from the sentence $\somenot{C}{B}$ just established, and the remaining premise $\all{D}{B}$.
+
+For the sake of brevity, let $\Ga$ be the premise set $\{\all{D}{B}, \somenot{A}{B}, \all{A}{C}\}$.
+This strategy, utilizing two consecutive proofs by contradiction, can be implemented as follows:
+
+:::{.lproof}
+    1. \Gamma, C\textrm{\textbf{a}}D \vdash C\textrm{\textbf{a}}D      [Hypothesis]
+    2. \Gamma, C\textrm{\textbf{a}}D, C\textrm{\textbf{a}}B \vdash C\textrm{\textbf{a}}B    [Hypothesis]
+    3. \Gamma, C\textrm{\textbf{a}}D, C\textrm{\textbf{a}}B \vdash A\textrm{\textbf{a}}C     [Hypothesis]
+    4. \Gamma, C\textrm{\textbf{a}}D, C\textrm{\textbf{a}}B \vdash A\textrm{\textbf{a}}B    [Barbara: 2, 3]
+    5. \Gamma, C\textrm{\textbf{a}}D, C\textrm{\textbf{a}}B \vdash A\textrm{\textbf{o}}B    [Hypothesis]
+    6. \Gamma, C\textrm{\textbf{a}}D \vdash C\textrm{\textbf{o}}B    [Contradiction: 4,5]
+    7. \Gamma, C\textrm{\textbf{a}}D \vdash D\textrm{\textbf{a}}B      [Hypothesis]
+    8. \Gamma, C\textrm{\textbf{a}}D \vdash C\textrm{\textbf{a}}B      [Barbara: 1, 7]
+    9. \Gamma \vdash C\textrm{\textbf{o}}D      [Contradiction: 6, 8]
+:::
+
+While this is a correct proof, it is does not perspicuously convey the structure of the reasoning.
+One of its more confusing features is that the hypothesis $\all{C}{D}$, which is the target of the second proof by contradiction (lines 1 and 6--8), also appears as a hypothesis in the first proof by contradiction (lines 2--5).
+Since $\all{C}{D}$ plays no role in the latter subproof, it seems more natural to introduce this hypothesis only after the first proof by contradiction has been completed:
+
+:::{.lproof}
+    1. \Gamma, C\textrm{\textbf{a}}B \vdash C\textrm{\textbf{a}}B    [Hypothesis]
+    2. \Gamma, C\textrm{\textbf{a}}B \vdash A\textrm{\textbf{a}}C     [Hypothesis]
+    3. \Gamma, C\textrm{\textbf{a}}B \vdash A\textrm{\textbf{a}}B    [Barbara: 1, 2]
+    4. \Gamma, C\textrm{\textbf{a}}B \vdash A\textrm{\textbf{o}}B    [Hypothesis]
+    5. \Gamma \vdash C\textrm{\textbf{o}}B    [Contradiction: 3,4]
+    6. \Gamma, C\textrm{\textbf{a}}D \vdash C\textrm{\textbf{a}}D      [Hypothesis]
+    7. \Gamma, C\textrm{\textbf{a}}D \vdash D\textrm{\textbf{a}}B      [Hypothesis]
+    8. \Gamma, C\textrm{\textbf{a}}D \vdash C\textrm{\textbf{a}}B      [Barbara: 6, 7]
+    9. \Gamma \vdash C\textrm{\textbf{o}}D      [Contradiction: 5, 8]
+:::
+
+While this better captures the intended structure of the reasoning, it is no longer strictly correct as a proof.
+In particular, the rule (Contradiction) cannot be applied to lines 5 and 8 since different hypotheses are being assumed at these two stages of the proof.
+What we would like to be able to do is repeat or  'reiterate' the sentence $\somenot{C}{D}$ in the context of the new proof by contradiction, so that the proof would now read:
+
+:::{.lproof}
+    1. \Gamma, C\textrm{\textbf{a}}B \vdash C\textrm{\textbf{a}}B    [Hypothesis]
+    2. \Gamma, C\textrm{\textbf{a}}B \vdash A\textrm{\textbf{a}}C     [Hypothesis]
+    3. \Gamma, C\textrm{\textbf{a}}B \vdash A\textrm{\textbf{a}}B    [Barbara: 1, 2]
+    4. \Gamma, C\textrm{\textbf{a}}B \vdash A\textrm{\textbf{o}}B    [Hypothesis]
+    5. \Gamma \vdash C\textrm{\textbf{o}}B    [Contradiction: 3,4]
+    6. \Gamma, C\textrm{\textbf{a}}D \vdash C\textrm{\textbf{a}}D      [Hypothesis]
+    7. \Gamma, C\textrm{\textbf{a}}D \vdash D\textrm{\textbf{a}}B      [Hypothesis]
+    8. \Gamma, C\textrm{\textbf{a}}D \vdash C\textrm{\textbf{a}}B      [Barbara: 6, 7]
+    9. \Gamma, C\textrm{\textbf{a}}D  \vdash C\textrm{\textbf{o}}B    [Reiteration: 5]
+    10. \Gamma \vdash C\textrm{\textbf{o}}D      [Contradiction: 8, 9]
+:::
+
+What justifies us in reiterating already established sentences in the context of new subproofs is the fact that the system $\S$ is monotonic, that is, if $\Ga\provess\ph$, then $\Ga,\De\provess\ph$ (see Exercise @exr-S-monotonicity).
+We can thus treat reiteration as a derived rule of inference.
+
+One commonly used notation for giving more streamlined representations of proofs involving hypothetical methods of reasoning is referred to as Fitch notation.[^fitch] As with the simple direct proofs discussed in Chapter 1, Fitch-style proofs are displayed as sequences of sentences rather than arguments.
+Instead of stating the premises of the argument explicitly they are treated as background context.
+To add a sentence to the set of hypotheses one writes down the sentence and increments the level of indentation by one.
+This same hypothesis is then later discharged by restoring the indentation of the proof to its previous level.
+Levels of indentation are explicitly marked using vertical lines and new hypotheses are highlighted by underlining them.
+The proof terminates with the desired conclusion appearing on the last line of the proof without indentation, signaling that all introduced hypotheses have been discharged.
+
+In Fitch notation, the initial version of the above proof, in which the second proof by contradiction appears as a subproof nested within the first, is written:
+
+:::{.lproof}
+    1. |    |_       C\textrm{\textbf{a}}D   [Hypothesis]
+    2. |    |    |_  C\textrm{\textbf{a}}B   [Hypothesis]
+    3. |    |    |   A\textrm{\textbf{a}}C   [Premise]
+    4. |    |    |   A\textrm{\textbf{a}}B   [Barbara: 2, 3]
+    5. |    |    |   A\textrm{\textbf{o}}B   [Premise]
+    6. |    |        C\textrm{\textbf{o}}B   [Contradiction: 4, 5]
+    7. |    |        D\textrm{\textbf{a}}B   [Premise]
+    8. |    |        C\textrm{\textbf{a}}B   [Barbara: 1, 7]
+    9.          C\textrm{\textbf{o}}D   [Contradiction: 6, 8]            
+:::
+
+The alternative version of the proof, in which the conclusion of the first proof by contradiction is reiterated in a subsequent subproof, is written:
+
+:::{.lproof}
+    1. |    |_  C\textrm{\textbf{a}}B   [Hypothesis]
+    2. |    |   A\textrm{\textbf{a}}C   [Premise]
+    3. |    |   A\textrm{\textbf{a}}B   [Barbara: 1, 2]
+    4. |    |   A\textrm{\textbf{o}}B   [Premise]
+    5.          C\textrm{\textbf{o}}B   [Contradiction: 3, 4]
+    6. |    |_  C\textrm{\textbf{a}}D   [Hypothesis]
+    7. |    |   D\textrm{\textbf{a}}B   [Premise]
+    8. |    |   C\textrm{\textbf{a}}B   [Barbara: 6, 7]
+    9. |    |   C\textrm{\textbf{o}}B   [Reiteration, 5]
+    10.          C\textrm{\textbf{o}}D   [Contradiction: 8, 9]            
+:::
+
+:::{#exr-fitch-proofs-in-S .exercise}
+{{< include /exercises/fitch-proofs-in-S.qmd >}}
+:::
+
+[^fitch]: Named after Frederic Brenton Fitch, who developed the notational scheme in the 1930s during his doctoral studies at Princeton under Alonzo Church.
+
+:::{#exm-smiley-relevance .example}
+{{< include /inserts/examples/smiley/relevance.qmd >}}
+:::
+
+## The Extensional Soundness and Completeness of $\s$ {#sec-syllogistic-logic-the-extensional-soundness-and-completeness-of}
+
+### The Soundness of $\s$
+
+In the remainder of this chapter, we will show that the proof system $\s$ is both sound and complete with respect to the extensional semantics for syllogistic logic introduced above.
+As usual, the soundness of the system $\s$ can be straightforwardly established by means of induction.
+To do so, it suffices to show that:
+
+1. Every axiom of $\s$ is a logical truth.
+
+2. Every direct rule of inference of $\s$ expresses a valid argument.
+
+3. Every hypothetical rule of inference of $\s$ preserves validity.
+
+The semantic facts required to establish these claims are collected together in the following theorem:
+
+:::{#thm-soundness-facts .theorem}
+i. $\models \all{A}{A}$
+
+ii. $\all{A}{B},\all{B}{C}\models\all{A}{C}$
+
+iii. $\all{A}{B}, \no{B}{C}\models\no{A}{C}$
+
+iv. $\no{A}{B}\models\no{B}{A}$
+
+v. If $\Ga,\ph\models\psi$ and $\Ga,\ph\models\neg\psi$, then $\Ga\models \neg\ph$.
+
+vi. If $\Ga,\ph\models\all{A}{B}$ and $\Ga,\ph\models\no{A}{B}$, then $\Ga\models\neg\ph$.
+
+:::{.proof}
+
+In what follows, let $\mathcal{M} = (\W,\si)$ be an arbitrary model of $\Ls$.
+
+i. Since, for any term $A$, $\si(A)\subset\si(A)$, it follows that $val^\mathcal{M}(\all{A}{A})=\true$.
+   Hence, $\models\all{A}{A}$.
+
+ii. Suppose $val^\mathcal{M}(\all{A}{B})=val^\mathcal{M}(\all{B}{C})=\true$.
+    Then, $\si(A)\subset\si(B)$ and $\si(B)\subset\si(C)$.
+    It follows that $\si(A)\subset\si(C)$, and so $val^\mathcal{M}(\all{A}{C})=\true$.
+    Hence, $\all{A}{B}, \all{B}{C}\models \all{A}{C}$.
+
+iii. Suppose $val^\mathcal{M}(\all{A}{B})=val^\mathcal{M}(\no{B}{C})=\true$.
+     Then, $\si(A)\subset\si(B)$ and $\si(B)\inter\si(C)=\emptyset$.
+     It follows that $\si(A)\inter\si(C)=\emptyset$, and so $val^\mathcal{M}(\no{A}{C})=\true$.
+     Hence, $\all{A}{B}, \no{B}{C}\models \no{A}{C}$
+
+iv. Suppose $val^\mathcal{M}(\no{A}{B})=\true$.
+    Then, $\si(A)\inter\si(B)=\emptyset$.
+    It follows that $\si(B)\inter\si(A)=\emptyset$, and so $val^\mathcal{M}(\no{B}{A})=\true$.
+    Hence, $\no{A}{B}\models\no{B}{A}$.
+
+v. Suppose $\Ga,\ph\models\psi$ and $\Ga,\ph\models\neg\psi$.
+   This means that, for every interpretation under which all of the sentences in $\Ga\cup\{\ph\}$ are true, $\psi$ and $\neg\psi$ are both true.
+   But since there are no interpretations under which $\psi$ and $\neg\psi$ are both true, it follows that there is no interpretation under which all of the sentences in $\Ga\cup\{\ph\}$ are true.
+   Thus, if $val^\mathcal{M}(\chi)=\true$, for all $\chi\in\Ga$, then $val^\mathcal{M}(\ph)=\false$.
+   But from the latter claim it follows that  $val^\mathcal{M}(\neg\ph)=\true$.
+   Hence $\Ga\models\neg\ph$.
+
+vi. Suppose $\Ga,\ph\models\all{A}{B}$ and $\Ga,\ph\models\no{A}{B}$.
+    This means that, for every interpretation under which all of the sentences in $\Ga\cup\{\ph\}$ are true, $\all{A}{B}$ and $\no{A}{B}$ are both true.
+    But since there are no interpretations under which $\all{A}{B}$ and $\no{A}{B}$ are both true, it follows that there is no interpretation under which all of the sentences in $\Ga\cup\{\ph\}$ are true.
+    Thus, if $val^\mathcal{M}(\psi)=\true$, for all $\psi\in\Ga$, then $val^\mathcal{M}(\ph)=\false$.
+    But from the latter claim it follows that  $val^\mathcal{M}(\neg\ph)=\true$.
+    Hence $\Ga\models\neg\ph$.
+
+:::
+:::
+
+It follows from this theorem, by induction, that the proof system $\s$ is sound, i.e.:
+
+:::{#thm-soundness-s .theorem}
+If $\Ga\provess\ph$, then $\Ga\models\ph$.
+:::
+
+### An Alternative Formulation of Completeness 
+
+<!-- Explain the technique of Henkin-style proofs of completeness better.
+Semantics and proof systems can be viewed as standard for joint assertability -->
+
+We will begin our proof of the completeness of $\s$ by first offering an alternative, but equivalent formulation, of the completeness theorem, which states:
+
+:::{#thm-soundness-s .theorem}
+If $\Ga\models\ph$, then $\Ga\provess\ph$.
+:::
+
+Our reformulation of this theorem will be in terms of two new notions: satisfiability and consistency.
+
+:::{#def-s-satisfiability .definition}
+
+Let $\Gamma$ be any set of categorical sentences.
+We say that $\Gamma$ is _satisfiable_ iff there exists a model $\mathcal{M}=(\W,\si)$ of $\Ls$, such that $val^\mathcal{M}(\ph)=\true$, for all $\ph\in\Gamma$.
+We say that $\Gamma$ is _unsatisfiable_ if it is not satisfiable.
+
+:::
+
+:::{#def-s-consistency .definition} 
+
+Let $\Gamma$ be any set of categorical sentences.
+We say that $\Gamma$ is _consistent_ iff there is no sentence $\ph$, such that $\Gamma\provess \ph$, and $\Gamma\provess\neg\ph$.
+We say that $\Gamma$ is _inconsistent_ if it is not consistent.
+
+:::
+
+We may first observe that if $\s$ is complete, then every consistent set of categorical sentences is satisfiable.
+To see this, suppose that $\Gamma$ is unsatisfiable.
+Since there is no model under which every sentence in $\Gamma$ is true, it follows trivially that for every $\ph$, both $\Gamma\models \ph$ and $\Gamma \models \neg\ph$.
+Thus, if the system $\s$ is complete, both $\Gamma\provess\ph$ and $\Gamma\provess\neg\ph$.
+But this means that $\Gamma$ is inconsistent.
+
+As we shall see, the converse of this claim holds as well, that is: if every consistent set of sentences is satisfiable, then the system $\s$ is complete.
+We begin by observing the following two facts:
+
+:::{#thm-s-sat .theorem}
+$\Gamma\not\models \ph$ iff $\Gamma\cup\{\neg\ph\}$ is satisfiable.
+
+:::{.proof}
+
+$\Gamma\cup\{\neg\ph\}$ is satisfiable iff there exists a model $\mathcal{M}$, such that $val^{\mathcal{M}}(\psi)=\true$, for all $\psi\in\Ga\cup\{\neg\ph\}$.
+But this is true iff there exists a model $\mathcal{M}$, such that $val^\mathcal{M}(\psi)=\true$, for all $\psi\in\Ga$, and $val^\mathcal{M}(\ph)=\false$, i.e., $\Gamma\not\models \ph$.
+
+:::
+:::
+
+:::{#thm-s-con .theorem}
+$\Gamma\not\provess\ph$ iff $\Gamma\cup\{\neg\ph\}$ is consistent.
+
+:::{.proof}
+
+First, suppose that $\Ga\provess\ph$.
+Then, by monotonicity, $\Ga\cup\{\neg\ph\}\provess\ph$.
+But since $\Gamma\cup\{\neg\ph\}\provess \neg\ph$, $\Gamma\cup\{\neg\ph\}$ is inconsistent.
+
+Next, suppose that $\Gamma\cup\{\neg\ph\}$ is inconsistent.
+Then there exists a sentence $\psi$ such that $\Gamma\cup\{\neg\ph\}\provess\psi$ and $\Gamma\cup\{\neg\ph\}\provess\neg\psi$.
+By (Contradiction), we have $\Ga\provess\ph$.
+
+:::
+:::
+
+In its contrapositive form, the completeness theorem asserts that if $\Gamma\not\provess \ph$, then $\Gamma\not\models \ph$.
+So, by @thm-s-sat and @thm-s-con, completeness is equivalent to the claim: if $\Gamma\cup\{\neg\ph\}$ is consistent, then $\Gamma\cup\{\neg\ph\}$ is satisfiable.
+Hence, if every consistent set of sentences is satisfiable, the completeness theorem holds.
+
+All told, then, the completeness theorem for $\s$ can be reformulated as follows:
+
+:::{#thm-s-alt-completeness .theorem}
+Every consistent set of categorical sentences is satisfiable.
+:::
+
+### The Completeness of $\s$
+
+To show that the completeness theorem for $\s$ holds, we will explain how one can construct, for any consistent set of categorical sentences, a model of the language under which every sentence in this set is true.
+Our construction will proceed as follows: we will consider the sentences of the language, one by one, and determine, for each such sentence, whether or not it can be consistently added to the sentences already in the set.
+If so, we will add it to the set, if not, we will add its contradictory opposite to the set.
+In this way, we will extend the original set to a 'maximal' set of sentences which can be used to decide, in a consistent manner, the truth or falsity of every sentence in the language.
+
+As we shall see, such a maximally consistent set amounts to an explicit characterization of a truth valuation of the language $\Ls$, with the members of the set indicating which of the sentences are true under this valuation.
+By reference to this maximal set, we will be able to construct a model of the language that satisfies exactly the sentences that are included in the set.
+Since the original set is contained in this maximal set, it too will be satisfied by this model.
+
+:::{#def-s-max-con .definition} 
+A set of categorical sentences $\Gamma$ is _maximally consistent_ if the following two conditions hold:
+
+1. $\Gamma$ is consistent.
+
+2. For every categorical sentence $\ph$: if $\ph\not\in\Ga$, then $\Ga\cup\{\ph\}$ is  inconsistent.
+
+:::
+
+We will now establish various facts concerning maximally consistent sets.
+The first states that a maximally consistent set contains all and only its own deductive consequences.
+
+:::{#thm-max-con-s-char .theorem}
+If $\Ga$ is a maximally consistent set, then $\Ga\provess\ph$ iff $\ph\in\Ga$.
+
+:::{.proof}
+The right-to-left direction of the claim is obvious.
+For the left-to-right direction, suppose $\ph\not\in\Ga$.
+Since $\Ga$ is maximally consistent, $\Ga\cup\{\ph\}$ is inconsistent.
+But this means that, for some sentence $\psi$, $\Ga,\ph\provess\psi$ and $\Ga,\ph\provess\neg\psi$.
+Hence, by (Contradiction), we have $\Ga\provess\neg\ph$.
+But since $\Ga$ is consistent, it follows that $\Ga\not\provess\ph$.
+:::
+:::
+
+The following two theorems state that maximally consistent sets properly encode the semantic relations of contradictoriness and contrariety:
+
+:::{#thm-max-con-1 .theorem}
+If $\Gamma$ is maximally consistent, then, for every sentence $\ph$, exactly one of the two sentences $\ph$ and $\neg\ph$ is a member of $\Gamma$.
+
+:::{.proof}  
+That at most one of these two sentences belongs to $\Gamma$ follows from the fact that $\Gamma$ is consistent.
+Now, suppose that neither sentence is in the set, i.e., $\ph\not\in\Gamma$ and $\neg\ph\not\in\Ga$.
+By the definition of maximal consistency, $\Gamma\cup\{\ph\}$ and $\Gamma\cup\{\neg\ph\}$ are both inconsistent.
+But then, by @thm-s-con, we have both $\Ga\provess\neg\ph$ and  $\Ga\provess\ph$, which contradicts the assumption that $\Gamma$ is consistent.
+:::
+:::
+
+:::{#thm-max-con-2 .theorem}
+If $\Gamma$ is maximally consistent, then at most one of the sentences $\all{A}{B}$ and $\no{A}{B}$ is a member of $\Gamma$.
+
+:::{.proof}  
+We first observe that $\all{A}{B},\no{A}{B}\provess\ph$, for any sentence $\ph$.
+The proof is as follows:
+
+:::{.lproof}
+    1.  |   |_  \neg\varphi   
+    2.  |   |   A\mathbf{a}B    [Premise]
+    3.  |   |   A\mathbf{e}B    [Premise]
+    4.  \varphi                 [Contrariety: 2, 3]         
+:::
+
+Thus, if $\Ga$ contains both $\all{A}{B}$ and $\no{A}{B}$, by @thm-max-con-s-char, $\Ga\provess\ph$, for any proposition $\ph$, which contradicts the assumption that $\Ga$ is consistent.
+:::
+:::
+
+How can we extract from a maximally consistent set of sentences $\Ga$ a model of the language which satisfies $\Ga$?
+One straightforward way to do so is to intepret the language autonymically, using the terms of the language themselves to represent the objects in the model's domain.
+An object will be modeled as a set of terms.
+This set may be thought of as that containing all and only those terms which can be truly predicated of that object which the set represents.
+To begin, we will treat every set of terms as a possible object.
+However, we will then systematically exclude certain objects from the domain based on the sentences in the maximally consistent set $\Ga$.
+If, for example, $\Ga$ the sentence $\all{A}{B}$, expressing the fact that every $A$ is a $B$, we will exclude from the domain every object that is an $A$ but not a $B$ (i.e., every set of terms which contains $A$ but not $B$).
+As we will see, the resulting model will satisfy $\Ga$.
+
+:::{#def-maxcon-s-int .definition}
+
+Let $\Theta$ be the set of all terms, and let $\W$ be the set of all subsets of $\Theta$.
+For any categorical sentence $\ph$, we write:
+
+$$
+\mu(\ph) = \left\{\begin{array}{ll} \{S\in \W: A\in S\textrm{ and }B\not\in S\} & \textrm{ if }\ph\textrm{ is }\all{A}{B} \\
+\{S\in \W: A\in S\textrm{ and }B\in S\} & \textrm{ if }\ph\textrm{ is }\no{A}{B}\\
+\emptyset & \textrm{otherwise} \end{array}\right.
+$$
+$$
+  \mu(\all{A}{B}) = \{S\in \W: A\in S\textrm{ and }B\not\in S\} 
+$$
+$$
+  \mu(\no{A}{B}) = \{S\in \W: A\in S\textrm{ and }B\in S\}
+$$
+If $S\in\mu(\ph)$, we say that $S$ is _excluded by $\ph$_.
+Let $\Ga$ be a maximally consistent set.
+We write:
+$$
+\W_\Ga = \W - \bigcup_{\ph\in\Ga} \mu(\ph) 
+$$
+In other words, $\W_\Ga$ is the set of all objects that are _not_ excluded by any sentence in $\Ga$.
+We write $\si_\Ga$ for the function assigning to each term a subset of $\W_\Ga$, defined by:
+$$
+\si_\Ga(A) = \{S\in \W_\Ga: A\in S\}
+$$
+:::
+
+To confirm that $(\W_\Ga,\si_\Ga)$ is a model of the language $\Ls$, we must show that the function $\si_\Ga$ assigns to every term a nonempty extension:
+
+:::{#thm-nonempty-ext .theorem}
+Let $\Ga$ be a maximally consistent set.
+For any term $A$, $\si_\Ga(A)$ is nonempty.
+
+:::{.proof}
+
+Suppose, for contradiction, that $\si_\Ga(A)$ is empty.
+This means that there is no set $S$ in $\W_\Ga$ such that $A\in S$.
+Let
+$$ 
+A_\Ga = \{B: \all{A}{B}\in \Ga\} 
+$$ 
+
+Since $\Ga\provess\all{A}{A}$, by @thm-max-con-s-char, $\all{A}{A}\in\Ga$ and so $A\in A_{\Ga}$.
+But since, by assumption, $\si_\Ga(A)$ is empty, it follows that $A_\Ga\not\in\W_\Ga$.
+This means that $A_\Ga$ must be excluded by some sentence $\ph\in\Ga$.
+First suppose that $\ph$ is the sentence $\all{C}{D}$.
+To say that $A_\Ga$ is excluded by $\all{C}{D}$ means that $C\in A_\Ga$ and $D\not\in A_\Ga$.
+By the definition of $A_\Ga$, this means that $\all{A}{C}\in\Ga$ and $\all{A}{D}\not\in\Ga$.
+But since $\all{C}{D}\in \Ga$, by (Barbara), we have $\all{A}{D}\in\Ga$.
+Contradiction.
+Next suppose that $\ph$ is the sentence $\no{C}{D}$.
+To say that $A_\Ga$ is excluded by $\no{C}{D}$ means that $C\in A_\Ga$ and $D\in A_\Ga$.
+By the definition of $A_\Ga$, this means that $\all{A}{C}\in\Ga$ and $\all{A}{D}\in\Ga$.
+But since $\no{C}{D}\in \Ga$, by (Celarent), we have $\no{A}{D}\in\Ga$.
+Contradiction, by @thm-max-con-2.
+
+:::
+:::
+
+Thus, $(\W_\Ga,\si_\Ga)$ is indeed a model.
+We will next show that this model satisfies the set of sentences $\Ga$:
+
+:::{#thm-max-con-model .theorem}
+Let $\Ga$ be a maximally consistent set and let $\mathcal{M}_\Ga$ be the model $(\W_\Ga,\si_\Ga)$.
+Then, for any sentence $\ph$: $\ph\in\Ga$ iff $val^{\mathcal{M}_\Ga}(\ph)=\true$
+
+:::{.proof}
+We consider each of the four kinds of categorical sentence in turn:
+
+1. $\ph$ is $\all{A}{B}$
+
+   The left-to-right direction of the claim follows directly from @def-maxcon-s-int.
+   For the right-to-left direction, suppose, for contradiction, that $\all{A}{B}\not\in \Ga$ but that $val^{\si_\Ga}(\all{A}{B})=\true$.
+   The latter implies that there is no set $S\in\W_\Ga$ such that $A\in S$ and $B\not\in S$.
+   Let
+    $$
+        A_\Ga = \{C: \all{A}{C}\in \Ga\}
+    $$
+    Since $\all{A}{A}\in\Ga$, $A\in A_{\Ga}$, and since $\all{A}{B}\not\in\Ga$, $B\not\in A_{\Ga}$. Hence, $A_\Ga\not\in\W_\Ga$. From this we derive a contradiction following exactly the proof of @thm-nonempty-ext.
+
+2. $\ph$ is $\no{A}{B}$
+
+   The left-to-right direction of the claim follows directly from @def-maxcon-s-int.
+   For the right-to-left direction, suppose, for contradiction, that $\no{A}{B}\not\in \Ga$ but that $val^{\si_\Ga}(\no{A}{B})=\true$.
+   The latter implies that there is no set $S\in\W_\Ga$ such that $A\in S$ and $B\in S$.
+   Let
+    $$
+            AB_\Ga = \{C: \all{A}{C}\in \Ga\textrm{ or }\all{B}{C}\in \Ga\}
+    $$
+    Since $\all{A}{A}, \all{B}{B}\in\Ga$, $A,B\in AB_{\Ga}$. Hence, $AB_\Ga\not\in\W_\Ga$. This means that $AB_\Ga$ must be excluded by some  sentence $\ph\in\Ga$. First suppose that $\ph$ is the sentence $\all{C}{D}$. To say that $\all{C}{D}$ excludes $AB_\Ga$ means that $C\in AB_\Ga$ and $D\not\in AB_\Ga$. By the definition of $AB_\Ga$, this means that either (i) $\all{A}{C}\in\Ga$ and $\all{A}{D}\not\in\Ga$; or (ii) $\all{B}{C}\in\Ga$ and $\all{B}{D}\not\in\Ga$. Since $\all{C}{D}\in \Ga$, by (Barbara), in either case, we get a contradiction. Next suppose that $\ph$ is the sentence $\no{C}{D}$. To say that $\no{C}{D}$ excludes $AB_\Ga$ means that $C\in AB_\Ga$ and $D\in AB_\Ga$. By the definition of $AB_\Ga$, there are four cases to consider:
+
+    i. $\all{A}{C}, \all{A}{D}\in \Ga$
+    ii. $\all{A}{C}, \all{B}{D}\in \Ga$
+    iii. $\all{B}{C}, \all{A}{D}\in \Ga$
+    iv. $\all{B}{C}, \all{B}{D}\in \Ga$
+
+    Since $\no{C}{D}\in \Ga$, in cases (i) and (iv) we have a contradiction by (Celarent) and @thm-max-con-2. Since $\no{C}{D}, \all{A}{C}, \all{B}{D}\provess\no{A}{B}$ and $\no{C}{D}, \all{B}{C}, \all{A}{D}\provess\no{A}{B}$, cases (ii) and (iii) contradict the assumption that $\no{A}{B}\not\in\Ga$. 
+
+3. $\ph$ is $\some{A}{B}$
+
+   This follows from @thm-max-con-1 and 2 above.
+
+4. $\ph$ is $\somenot{A}{B}$
+
+   This follows from @thm-max-con-1 and 1 above.
+:::
+:::
+
+An immediate corollary of this theorem is that every maximally consistent set of categorical sentences is satisfiable.
+Thus, it only remains to show that every consistent set of sentences can be extended to a maximally consistent one.
+From this, it will follow that every consistent set of sentences is satisfiable, which, as we have seen, is equivalent to the claim that $\s$ is complete.
+
+:::{#thm-con-choice .theorem}
+If $\Gamma$ is a consistent set, then for any sentence $\ph$, either $\Gamma\cup\{\ph\}$ or $\Gamma\cup\{\neg\ph\}$ is consistent.
+
+:::{.proof}
+
+Suppose that both $\Gamma\cup\{\ph\}$ and $\Gamma\cup\{\neg\ph\}$ are inconsistent.
+By @thm-s-con, it follows that both $\Gamma\provess\neg\ph$ and $\Gamma\provess\ph$.
+This, however, contradicts the assumption that $\Gamma$ is consistent.
+
+:::
+:::
+
+:::{#thm-extension .theorem}
+
+If $\Gamma$ is a consistent set, then there exists a maximally consistent set $\Gamma^*$ such that $\Gamma\subset\Gamma^*$.
+
+:::{.proof}
+
+Let $\ph_1,\ph_2,\ldots$ be an enumeration of all of the sentences of $\Ls$.
+We construct an increasing sequence of sets $\Gamma_1\subset \Gamma_2\subset\ldots$ as follows: first, let $\Gamma_1=\Gamma$.
+Now, suppose that $\Gamma_n$ ($n\geq 1$) has been constructed and that it is consistent.
+Let:
+
+$$
+    \Gamma_{n+1}=\left\{\begin{array}{ll} \Gamma_n\cup\{\ph_n\} & \textrm{ if }\Gamma_n\cup\{\ph_n\}
+             \textrm{ is consistent.}                                        \\
+             \Gamma_n\cup\{\neg\ph_n\}  & \textrm{otherwise}\end{array}\right.
+$$
+
+By @thm-con-choice, $\Gamma_{n+1}$ is consistent, and so the construction can continue.
+Let $\Gamma^*$ be the set of all sentences which appear in some set in the sequence $\Ga_1,\Ga_2,\ldots$.
+Since $\Ga=\Ga_1$, clearly $\Ga\subset \Ga^*$.
+
+We will now show that $\Gamma^*$ is a maximally consistent set.
+First suppose, for contradiction, that $\Gamma^*$ is inconsistent.
+Then for some $\ph$, $\Gamma^*\provess\ph$ and $\Gamma^*\provess\neg\ph$.
+Given a proof of $\ph$ from $\Gamma^*$ and a proof of $\neg\ph$ from $\Gamma^*$, let $\Delta$ be the set of all sentences in $\Gamma^*$ that are appealed to in one or the other of these proofs.
+For each $\psi\in\Delta$, let $n(\psi)$ be the smallest $n$ such that $\psi\in\Gamma_n$.
+Since proofs are, by definition, of finite length, $\Delta$ is a finite set.
+Thus, the number
+
+$$
+    m=\max\{n(\psi):\psi\in\Delta\}
+$$
+
+is a finite number, and every sentence in $\Delta$ is a member of $\Gamma_m$.
+But then the aforementioned proofs of $\ph$ and $\neg\ph$ from $\Ga^*$ are also proofs from $\Gamma_m$.
+But this means that $\Gamma_m$ is inconsistent, which contradicts the definition of how this set was constructed.
+Thus, $\Gamma^*$ is consistent.
+Now, to show that $\Ga^*$ is maximal, let $\ph$ be any sentence such that $\ph\not\in\Ga^*$.
+By the definition of $\Gamma^*$, it follows that $\neg\ph\in\Ga^*$.
+Hence, adding $\ph$ to $\Ga^*$ would render the set inconsistent.
+Thus, $\Ga^*$ is a maximally consistent set such that $\Ga\subset\Ga^*$.
+
+:::
+:::
+
+We are now at last in a position to prove completeness.
+Let $\Ga$ be any consistent set.
+By @thm-extension, there exists a maximally consistent set $\Ga^*$ such that $\Ga\subset\Ga^*$.
+As we have seen, $\Ga^*$ is satisfiable by the model $(\W_{\Ga^*},\si_{\Ga^*})$.
+But any model that satisfies $\Gamma^*$ also satisfies $\Ga$, and so $\Ga$ too is satisfiable.
+
+Hence, every consistent set of sentences is satisfiable, and this, as we have seen, is equivalent to the completeness of $\s$.
+Thus, the proof system $\s$ is a sound and complete deductive system with respect to the extensional semantics for syllogistic logic.
+
+<!-- TODO: Add Insert on Smiley Completeness with Chains -->
+
+## References {#sec-syllogistic-logic-references-unnumbered .unnumbered}

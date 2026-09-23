@@ -1,0 +1,3 @@
+# Course Notes {.unnumbered}
+
+{{< include /README.md >}}

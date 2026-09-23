@@ -1,0 +1,13 @@
+# Adds the solutions appendix on top of the base chapters/appendices list
+# (Quarto profiles merge list-valued keys rather than replacing them --
+# confirmed by testing, not assumed). This file is harmless to commit
+# publicly: it references a path that simply doesn't exist until the
+# private logic-solutions repo is cloned into solutions/, at which point
+# `quarto preview --profile instructor` starts working.
+
+project:
+  output-dir: _book/instructor_manual
+
+book:
+  appendices:
+    - solutions/solutions-appendix.qmd

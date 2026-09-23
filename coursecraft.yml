@@ -1,0 +1,27 @@
+coursecraft_spec: "1.0"
+
+conventions:
+  # one coarse .qmd file per chapter/appendix; order is lexicographic by
+  # filename, so numbered/lettered prefixes (01-..., A-...) control order
+  chapter_glob: "chapters/*.qmd"
+  appendix_dir_glob: "appendices/*.qmd"     # letters, or flat singleton files
+
+  # shared, flat fragment trees, pulled in via absolute {{< include >}}
+  exercise_glob: "exercises/*.qmd"
+  insert_glob: "inserts/**/*.qmd"
+
+  # every revealable section is a labeled '##' heading; instrumentation
+  # wraps each one in a flat unless-meta="sections.<label>" div, never
+  # nested when-profile divs
+  label_prefix: "sec-"
+  chapter_marker_class: "chapter"   # also used for appendices (kind: chapter|appendix
+                                     # is determined by which directory a file is in,
+                                     # not by this class -- see chapter_glob/appendix_dir_glob)
+
+  macros_include: "/assets/macros/macros.qmd"
+
+  # .lproof div content is raw text (exact indentation + line numbers
+  # matter to the extension's own parser) and must never be reflowed,
+  # rewrapped, or trimmed by any tooling
+  raw_text_div_classes:
+    - lproof
