@@ -70,7 +70,6 @@ In the remainder of this chapter, we take up each of these three tasks in turn.
 In psychological terms, an inference can be characterized as a rational transition in thought.
 We think certain thoughts and, for reason of thinking these thoughts, we are led to think something else.
 It is natural to regard the thoughts involved in an inference as non-linguistic abstractions, distinct from the specific sentences that may be used to express these thoughts in a particular language.
-This is a test of the distinction between thought and language.
 Thus, for example, one may wish to allow that one and the same thought, say, the thought that 'snow is white', can be expressed in German and French by the sentences 'schnee ist weiß' and 'la neige est blanche', respectively.
 Moreover, if two thinkers, one in German and one in French, were each to conclude from this that 'something is white'---'etwas ist weiß' or 'quelque chose est blanc'---then, it may well be said, that, despite their linguistic differences, both reasoners have drawn one and the same inference.
 
