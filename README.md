@@ -46,7 +46,11 @@ requires cloning the private `logic-solutions` repo first; see
 
 ## Formatting is automatic, not manual
 
-Don't hand-format `.qmd` files. `chapter_tools.py` does it for you:
+Don't hand-format `.qmd` files. [`coursecraft`](https://github.com/<your-username>/coursecraft)
+does it for you -- one-time setup per machine:
+```
+pip install git+https://github.com/<your-username>/coursecraft.git
+```
 
 - **On save** (VS Code, if you installed the *Run on Save* extension --
   see `.vscode/settings.json`): reformats the file you just saved.
@@ -59,6 +63,13 @@ Don't hand-format `.qmd` files. `chapter_tools.py` does it for you:
 - **In CI**: `.github/workflows/check-format.yml` fails a PR if any
   tracked `.qmd` file isn't already correctly formatted -- the backstop
   for anyone who edited without the hook installed.
+
+`coursecraft` also has a `lint` command that checks for `##` headings
+missing a `{#sec-...}` label (it reports, never guesses a name for
+you):
+```
+coursecraft lint chapters/*.qmd appendices/*.qmd
+```
 
 ## Solutions
 

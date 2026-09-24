@@ -4,11 +4,11 @@ repos:
       - id: reflow-qmd
         name: Reflow .qmd files (semantic linebreaks)
         description: >
-          Runs chapter_tools.py on staged .qmd files. If any file needed
-          reformatting, the commit is stopped so you can review the
-          change and re-stage it -- the same convention tools like
+          Runs `coursecraft reflow` on staged .qmd files. If any file
+          needed reformatting, the commit is stopped so you can review
+          the change and re-stage it -- the same convention tools like
           black/prettier use, so a reformat is never silently folded
           into a commit without being seen first.
-        entry: python3 chapter_tools.py
+        entry: coursecraft reflow
         language: system
-        files: ^(chapters|appendices|content/exercises|content/inserts)/.*\.qmd$
+        files: ^(chapters|appendices|exercises|inserts)/.*\.qmd$

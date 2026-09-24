@@ -3,8 +3,8 @@
   // course-notes source files. .lproof blocks, hanging-indent lists, and
   // semantic linebreaks all depend on exact whitespace that a
   // general-purpose Markdown formatter doesn't know is load-bearing.
-  // The project's own reflow tool (chapter_tools.py) is the only thing
-  // that should ever reformat these files.
+  // coursecraft (pip install coursecraft) is the only thing that should
+  // ever reformat these files.
   "[quarto]": {
     "editor.defaultFormatter": null,
     "editor.formatOnSave": false,
@@ -26,16 +26,17 @@
   "editor.wordWrap": "on",
 
   // On every save, reflow the file into semantic-linebreak form (one
-  // sentence per line) using the project's own tool -- this is what
-  // keeps hand-edited chapters/exercises consistently formatted without
+  // sentence per line) using coursecraft -- this is what keeps
+  // hand-edited chapters/exercises consistently formatted without
   // anyone needing to remember to run anything manually. Scoped to the
-  // content directories that actually hold master-repo prose, so it
-  // never touches generated files (e.g. a rendered _book/ output).
+  // directories that actually hold master-repo prose, so it never
+  // touches generated files (e.g. a rendered _book/ output). Requires
+  // `pip install coursecraft` once per machine.
   "emeraldwalk.runonsave": {
     "commands": [
       {
-        "match": "(chapters|appendices|content/exercises|content/inserts)/.*\\.qmd$",
-        "cmd": "python3 ${workspaceFolder}/chapter_tools.py ${file}"
+        "match": "(chapters|appendices|exercises|inserts)/.*\\.qmd$",
+        "cmd": "coursecraft reflow ${file}"
       }
     ]
   }

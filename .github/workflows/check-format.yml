@@ -20,12 +20,15 @@ jobs:
         with:
           python-version: '3.x'
 
+      - name: Install coursecraft
+        run: pip install git+https://github.com/<your-username>/coursecraft.git
+
       - name: Check .qmd formatting
         run: |
           mapfile -t files < <(git ls-files | grep -E \
-            '^(chapters|appendices|content/exercises|content/inserts)/.*\.qmd$')
+            '^(chapters|appendices|exercises|inserts)/.*\.qmd$')
           if [ "${#files[@]}" -eq 0 ]; then
             echo "No matching .qmd files found."
             exit 0
           fi
-          python3 chapter_tools.py --check "${files[@]}"
+          coursecraft reflow --check "${files[@]}"
