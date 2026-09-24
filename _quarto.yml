@@ -11,6 +11,7 @@ book:
 
   chapters:
     - index.qmd
+    - chapters/00-introduction.qmd
     - chapters/01-argument-validity-proof.qmd
     - chapters/02-syllogistic-logic.qmd
     - chapters/03-propositional-logic.qmd
