@@ -39,12 +39,9 @@ Consider, for example, the following paradoxes, each of which has been made the 
 {{< include /inserts/sorites.qmd >}}
 :::
 
-Later on in this course, we will have occasion to revisit each of these paradoxes, and discuss them in more detail.
-For now, let us focus on the last example of the [sorites paradox](#sorites){.unstyled-link}, as it can be used to illustrate how philosopher's employ the method of logical analysis to treat paradoxes of reasoning.
-
 When confronted by a paradox, the question one must ask is: where has the reasoning gone wrong?
 As a first step towards answering this question, it is natural to try to identify the principle assumptions that are being relied upon in the fallacious argument.
-In the case of the sorites paradox, the fallacy relies on the fact that there are certain properties---such as that of being a heap---which seem to exhibit the following features:
+For example, in the case of the [sorites paradox](#sorites){.unstyled-link}, the fallacy relies on the fact that there are certain properties---such as that of being a heap---which seem to exhibit the following features:
 
 1. Whether or not the property applies is invariant under small changes in the object to which it is applied.
 
