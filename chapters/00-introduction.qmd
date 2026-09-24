@@ -9,7 +9,8 @@ bibliography: "introduction.bib"
 Logic is one of the few subjects to appear on nearly every philosophy curriculum worldwide.
 A student who is new to the subject may naturally wonder why this should be the case.
 Why, that is, should the study of logic be regarded as a necessary prerequisite to a philosophical education?
-Puzzlement on this score is sure to increase when, upon first entry into the study of logic, one is almost immediately confronted with formulas and equations that seem more at home in a course of mathematics than philosophy. 
+Puzzlement on this score is sure to increase when, upon first entry into the study of logic, one is almost immediately confronted with formulas and equations that seem more at home in a course of mathematics than philosophy.
+This is a test.
 
 One potential source of confusion as to logic's proper place within philosophy derives from the fact that what might be termed _logicality_---or the capacity to reason well---is no more necessary an intellectual virtue for the philosopher than it is for, say, the chemist, the historian, or the statistician.
 And yet in other disciplines one does not find logic being taught as its own subject.
