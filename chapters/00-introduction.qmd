@@ -22,7 +22,8 @@ Why do they treat logic as having its own distinctive subject matter and not mer
 The answer, in short, is that reasoning, or argumentation, is not merely something that philosophers do and aspire to do well.
 It is also among the principal _objects_ of philosophical scrutiny.
 
-This is a test sentence. This is a second test sentence.
+This is a test sentence.
+This is a second test sentence.
 
 There is no more recognizably philosophical form of intellectual activity as that which results from the attempt to resolve the feeling of paradox that accompanies an apparently sound argument which leads to a manifestly absurd conclusion.
 For the philosopher, such paradoxes of reasoning are not merely something to be avoided in practice---which perhaps would be simple enough to achieve---they are also sources of potential insight.
