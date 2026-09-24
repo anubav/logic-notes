@@ -21,7 +21,7 @@ jobs:
           python-version: '3.x'
 
       - name: Install coursecraft
-        run: pip install git+https://github.com/<your-username>/coursecraft.git
+        run: pip install git+https://github.com/anubav/coursecraft.git
 
       - name: Check .qmd formatting
         run: |

@@ -46,10 +46,10 @@ requires cloning the private `logic-solutions` repo first; see
 
 ## Formatting is automatic, not manual
 
-Don't hand-format `.qmd` files. [`coursecraft`](https://github.com/<your-username>/coursecraft)
+Don't hand-format `.qmd` files. [`coursecraft`](https://github.com/anubav/coursecraft)
 does it for you -- one-time setup per machine:
 ```
-pip install git+https://github.com/<your-username>/coursecraft.git
+pip install git+https://github.com/anubav/coursecraft.git
 ```
 
 - **On save** (VS Code, if you installed the *Run on Save* extension --
