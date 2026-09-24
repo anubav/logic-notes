@@ -11,8 +11,7 @@ In Polish notation, we define the sentences of the language inductively as follo
 
 a. Show that no sentence in Polish notation is a proper prefix of any other.
 
-b. 
-   Use part (a) to show that the sentences expressed in Polish notation satisfy the unique decomposition theorem, i.e., for each sentence $\ph$ exactly one of the following holds:
+b. Use part (a) to show that the sentences expressed in Polish notation satisfy the unique decomposition theorem, i.e., for each sentence $\ph$ exactly one of the following holds:
 
     1. $\ph$ is an atomic sentence.
 

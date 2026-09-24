@@ -1,7 +1,6 @@
 a. How many $n$-ary truth functions are there?
 
-b. 
-   An $n$-ary truth function is _exchangeable_ if its value remains the same regardless of the order in which its $n$ arguments are given to it.
+b. An $n$-ary truth function is _exchangeable_ if its value remains the same regardless of the order in which its $n$ arguments are given to it.
    Let $f$ be an exchangeable $2$-ary truth function satisfying:
 
     $$
