@@ -605,7 +605,7 @@ Semantics and proof systems can be viewed as standard for joint assertability --
 
 We will begin our proof of the completeness of $\s$ by first offering an alternative, but equivalent formulation, of the completeness theorem, which states:
 
-:::{#thm-soundness-s .theorem}
+:::{#thm-completeness-s .theorem}
 If $\Ga\models\ph$, then $\Ga\provess\ph$.
 :::
 

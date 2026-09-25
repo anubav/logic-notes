@@ -148,7 +148,7 @@ We will do so with the aim of interpreting the propositional connectives as effe
 |:----------:|:------------|:------------------------------------------|
 | $\neg$     | negation    | It is not the case that $\smallblank$.    |
 | $\conj$    | conjunction | $\cdots$ and $\smallblank$.               |
-| $\disj$    | ddisjunction| $\cdots$ or $\smallblank$ (or both).      |
+| $\disj$    | disjunction| $\cdots$ or $\smallblank$ (or both).      |
 | $\imp$     | conditional | If $\cdots$, then $\smallblank$.          |
 
 : The intended meanings of the propositional connectives
@@ -263,7 +263,7 @@ Every binary compound begins with the symbol $($, but every atomic sentence begi
 :::
 :::
 
-:::{#prp-syntax-1 .proposition}
+:::{#prp-syntax-3 .proposition}
 No negation is a binary compound.
 
 :::{.proof}
