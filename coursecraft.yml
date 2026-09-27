@@ -1,8 +1,8 @@
 coursecraft_spec: "1.0"
 
 conventions:
-  # one coarse .qmd file per chapter/appendix; order is lexicographic by
-  # filename, so numbered/lettered prefixes (01-..., A-...) control order
+  # one .qmd file per chapter/appendix; document order is determined by
+  # the listing in _quarto.yml, not by filename
   chapter_glob: "chapters/*.qmd"
   appendix_dir_glob: "appendices/*.qmd"     # letters, or flat singleton files
 
