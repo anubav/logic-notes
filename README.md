@@ -43,6 +43,16 @@ requires cloning the private `logic-solutions` repo first; see
   `{#sec-...}` label and isn't part of the chapter/section reveal
   scheme -- only whether an exercise is *assigned* is section-specific,
   and that's decided in a section's own `course.yaml`, not here.
+  Every exercise include **must be wrapped** in a `:::{#exr-<name>}`
+  div, where `<name>` exactly matches the fragment filename stem:
+  ```
+  :::: {#exr-modus-ponens}
+  {{< include /exercises/modus-ponens.qmd >}}
+  ::::
+  ```
+  This is what lets Quarto auto-number exercises book-wide and generate
+  `@exr-modus-ponens` cross-references in homework files. `coursecraft
+  validate-notes` enforces it.
 
 ## Formatting is automatic, not manual
 
