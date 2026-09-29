@@ -47,7 +47,7 @@ requires cloning the private `logic-solutions` repo first; see
   div, where `<name>` exactly matches the fragment filename stem:
   ```
   :::: {#exr-modus-ponens}
-  {{< include /exercises/modus-ponens.qmd >}}
+  {{{< include /exercises/modus-ponens.qmd >}}}
   ::::
   ```
   This is what lets Quarto auto-number exercises book-wide and generate
