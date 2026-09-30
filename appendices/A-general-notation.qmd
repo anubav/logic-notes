@@ -21,8 +21,6 @@ In this appendix, we introduce, in cursory fashion, a small part of this standar
 
 In addition to the letters of the English alphabet, the use of Greek letters to represent mathematical entities has been a common practice throughout much of the history of mathematics.[^greek-alphabet] The 24 letters of the Greek alphabet are given in @tbl-greek-alphabet below.
 The letters that appear most often in this text have been highlighted in red.
-It will be helpful to memorize at least the highlighted letters along with their pronunciations, so that you can easily give voice to the text as you read through the notes.
-You should also practice writing these letters so that you can include them in your own written work.
 
 [^greek-alphabet]:The 19th c. polymath Charles Babbage once complained: "The use of Greek letters in algebraic calculation, which has found wide acceptance among recent mathematicians, cannot in itself encumber the operations in the least.
 But the uncouthness of the Greek language, which is in part revealed in the shape of its alphabetic characters, gives to algebraic expressions a certain mystic appearance" (@Babbage1830-dv, p. 395)
@@ -47,7 +45,7 @@ The Greek alphabet, with commonly used letters highlighted in red, and the stand
 :::
 
 <div style="width:200px; height:100px; margin-left:auto; margin-right:auto; display:flex; justify-content:center; align-items:center;"> <audio controls>
-    <source src="../../../static/audio/The Greek Alphabet (American English Pronunciation).mp3" type="audio/mpeg">
+    <source src="/static/audio/The Greek Alphabet (American English Pronunciation).mp3" type="audio/mpeg">
     Your browser does not support the audio element.
 </audio> </div>
 
@@ -55,8 +53,12 @@ While the decision as to which Greek letter to use to represent a mathematical o
 One such convention worth noting is that the capital/lowercase distinction is often utilized to mark a distinction between collections of objects and their individual members.
 Thus, if a capital letter such as $\Ga$ is used to denote a set of objects, the members of that set will often be denoted by lowercase letters such as $\ph$, $\psi$, and $\chi$.[^phi-chi-psi]
 
-[^phi-chi-psi]: In logic and mathematics, it is much more common to find the letters $\ph$, $\psi$, $\chi$ listed in the order here given than in their proper Greek alphabetic order, and, in this course, we submit to this convention.
-It must be acknowledged, however, that apart from the fact that when pronounced in this unalphabetic order the three-letter sequence has a pleasant, memorable rhythm, there is no good reason to do so.
+[^phi-chi-psi]: In logic and mathematics, it is much more common to find the letters $\ph$, $\psi$, $\chi$ listed in the order here given than in their proper Greek alphabetic order.
+In this course, we yield to this convention, however, it must be admitted that, apart from the fact that when pronounced in this unalphabetic order the three-letter sequence has a pleasant, memorable rhythm, there is no good reason for our doing so.
+
+::: {#exr-greek}
+{{< include /exercises/greek.qmd >}}
+:::
 
 ## Iff {#sec-general-notation-iff}
 
@@ -200,7 +202,7 @@ $$
     \{2n+1: 0\leq n\leq 4\}
 $$
 
-Note that there is nothing to prevent a set from having other sets among its members---nor is there anything wrong with a set of sets of sets, or a set of sets of sets of sets, etc.
+Note that there is nothing to prevent a set from having other sets among its members---nor is there anything wrong with a set of sets of sets, or a set of sets of sets of sets, etc.^[@exr-russell below describes Russell's famous paradox, revealing the inconsistency of the formalization of naive set theory given by @Frege1893-ld in his _Grundgesetze der Arithmetik_. In that work, Frege assumed that any property whatsoever---including the property of not being a member of itself---could be used in the formation of a well-defined set. For a detailed discussion of the various approaches adopted by modern formalizations of set theory to avoid Russell's paradox, see @Fraenkel1973-tk.]
 
 ::: {#exr-russell}
 {{< include /exercises/russell.qmd >}}
