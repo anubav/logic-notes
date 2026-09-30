@@ -113,7 +113,6 @@ These systems of logic include classical propositional logic, first-order quanti
 A great deal of conceptual insight can be gained simply by formalizing arguments as derivations in these systems, and one can be certain that any proposed solution to a philosophical problem which calls for a significant revision to one of these systems is venturing into deep philosophical waters.
 Before daring such depths, it is therefore essential for any student of analytic philosophy to gain facility in working with these standard systems of logic and to come to understand both their inherent capacities and limitations.
 This is what we aim to achieve in this course.
-This is a test.
 
 ::: {#exr-outside-reading}
 {{< include /exercises/outside-reading.qmd >}}
