@@ -17,44 +17,44 @@ _Logic_, in the most general sense of the term, refers to the study of the norms
 In this sense, logic concerns not only the sort of reasoning expressed in mathematical proofs but also such reasoning as underwrites a statistical inference or the confirmation of a scientific theory.
 If we further countenance informal methods of reasoning, the scope of logic grows wider still, comprehending such rhetorical forms of argumentation as one might encounter in a philosophy text or a newspaper editorial and even those vague heuristics and patterns of inference summarized by the phrase "common sense".
 Given such a wide scope of application, any introduction to logic must begin with a suitably delimited statement of its intended subject matter.
-
 Notwithstanding the generic title of this course, the topic of our inquiry can more aptly be termed _deductive_ logic, or, to use a less technical term, _mathematical_ logic.
-What exactly is meant by this phrase?
+But what exactly is meant by this phrase?
+
 The most obvious function of the qualifier 'mathematical' when prefixed to the term logic is to restrict the subject matter of the inquiry to the particular sort of reasoning that is done in mathematics.
 Mathematical logic, in this sense of the phrase, is exclusively concerned with reasoning of the sort which ensures that the truth of a conclusion follows from various assumptions in just the way that the truth of a theorem in geometry follows from more basic claims, or axioms, characterizing elementary geometrical notions such as points, lines, planes, and the like.
 In fact, it turns out that the systems of logic that we will examine in this course are remarkably well-suited to the study of such reasoning.
 Indeed, among the many impressive achievements of the landmark investigations into the foundations of mathematics conducted in the first half of the 20th century was the discovery that a single system of what shall later be introduced as first-order quantificational logic, involving only a handful of axiom schemas, is sufficient to comprehend all but a small fraction of the proofs that have ever been given in mathematics!
 
 There is, however, a second sense of the phrase 'mathematical logic' that will be equally relevant for our purposes.
-In this alternative sense, the phrase 'mathematical' functions as an adverbial modifier, indicating something about the methodology by which the study of logic is to be pursued rather than delimiting its material.
+In this alternative sense, the phrase 'mathematical' functions as an adverbial modifier, indicating something about the methodology by which the study of logic is to be pursued rather than delimiting its subject matter.
 Specifically, it implies that the methods to be employed in this study are themselves mathematical in nature.
 Thus, just as mathematical psychology does not refer to the psychological study of mathematicians but instead to the deploy of mathematical techniques to investigate formal models of psychological processes, mathematical logic, in this latter sense of the phrase, does not refer to the study of such reasoning as is done by mathematicians but instead to the study of logic _done mathematically_.
 In line with this approach, the systems of logic that we will consider in this course will themselves be represented as mathematically well-defined structures, and the claims that we will make about these systems will be established using standard mathematical techniques.
 
-"Logic", as the phrase will be used in this course, is to be understood as mathematical in both of the above senses of the term.
+"Logic", as the phrase will be used in this course, is to be understood as mathematical in both of the above senses.
 In fact, it is this duality of meaning which endows the subject not only with its peculiar charm, but also with no small part of its philosophical value.
 For, if logic is concerned to study the sort of reasoning done in mathematics and if, at the same time, it is itself just a branch of mathematics, then one may meaningfully ask what follows when the claims established in the study of logic are applied to itself.
 The answer, as it turns out, is quite a lot!
 The essentially self-reflective nature of logic is what allows for the precise formulation of such provocative theses as "arithmetical truth cannot be defined arithmetically", and "if a computer can simulate all of our mathematical reasonings, then, in principle, we cannot fully grasp how it works".
 
-In order to reflect seriously on the philosophical import of such claims, one must first understand what exactly they mean.
-And, for this, we require a thorough understanding of the basic concepts of logic.
+Of course, in order to reflect seriously on the philosophical import of such claims, one must first understand what they mean.
+For this, we require a thorough understanding of the basic concepts of logic.
 Let us begin, then, by considering in more detail how the study of logic can be made mathematical.
 
 ### Making Logic Mathematical
 
 Logic seeks to investigate the norms that govern the activity of _reasoning_.
-An act of reasoning proceeds from certain claims that one takes to be true.
+When one reasons, one proceeds from certain claims that one takes to be true.
 One then applies to these claims some prescribed set of rules or rational methodology, in accordance with which one is led to infer that something else is true.
 
-Logic, then, is concerned to investigate the general conditions under which reasoning leads to good---or, to use the logician's preferred approbative, _valid_---inferences.
+Logic, then, is concerned to investigate the general conditions under which reasoning produces good---or, to use the logician's preferred approbative, _valid_---inferences.
 It is thus concerned with questions of the following form:
 
 1. Is a given method of reasoning such as to result in only valid inferences or, by employing that method, can one sometimes be led to draw invalid inferences as well?
 
 2. Are there some valid inferences in a given domain which, in principle, cannot result from applying a given method of reasoning, or are all such inferences invalid?
 
-To render such questions mathematically precise, the following tasks must first be performed:
+To render such questions mathematically precise, the following tasks must be performed:
 
 1. Inferences must be represented as mathematical objects.
 
@@ -69,16 +69,72 @@ In the remainder of this chapter, we take up each of these three tasks in turn.
 
 In psychological terms, an inference can be characterized as a rational transition in thought.
 We think certain thoughts and, for reason of thinking these thoughts, we are led to think something else.
-It is natural to regard the thoughts involved in an inference as non-linguistic abstractions, distinct from the specific sentences that may be used to express these thoughts in a particular language.
+It is natural to regard the thoughts involved in an inference as non-linguistic abstractions, distinct from the specific sentences that may be used to express them in any particular language.
 Thus, for example, one may wish to allow that one and the same thought, say, the thought that 'snow is white', can be expressed in German and French by the sentences 'schnee ist weiß' and 'la neige est blanche', respectively.
 Moreover, if two thinkers, one in German and one in French, were each to conclude from this that 'something is white'---'etwas ist weiß' or 'quelque chose est blanc'---then, it may well be said, that, despite their linguistic differences, both reasoners have drawn one and the same inference.
 
-Nevertheless, for the purpose of representing inferences as mathematical objects, we will disregard the intuitive difference between an inference in thought and its linguistic formulation and construe inferences as purely syntactic constructs.
+Nevertheless, for the purpose of representing inferences as mathematical objects, we will disregard the intuitive difference between an inference in thought and its linguistic formulation and construe inferences as purely _syntactic_ constructs.
 In other words, we will represent an inference by a particular collection of grammatically well-formed sentences expressed in a given language.
 
 We will refer to the syntactic objects representing inferences as _arguments_.
 An argument is a collection of sentences, one of which is distinguished as that for the sake of which the others are set forth.
 The distinguished sentence is referred to as the argument's _conclusion_ and the sentences offered in its support as the argument's _premises_.
+
+What exactly do we mean by a sentence?
+The grammatical concept of a sentence in English is that of a closed, self-contained linguistic unit including at least one independent clause.
+But sentences in English, thus understood, can serve a variety different functions.
+The four functional categories of sentences that usually appear in grammar textbooks are as follows:
+
+1. Declarative Sentences - A sentence that is used to declare or to assert something ("The class begins at noon.")
+2. Interrogative Sentences - A sentence that is used to ask a question ("When does the class begin?")
+3. Imperative Sentences - A sentence that is used to issue a command or a request.
+   ("Please arrive to class on time.")
+4. Exclamatory Sentences - A sentence that is used to express an attitude or state of mind.
+   ("What an amazing lecture!")
+
+When we give an argument, we assert things, either so as to make it clear what our reasons are for accepting a conclusion, or else to make it clear what we are accepting on the basis of those reasons.
+Thus, questions, commands, and exclamations, in so far as they do not assert anything, cannot straightforwardly appear in arguments.
+If they occur in argumentative text, they must be paraphrased into declarative form before the argument can be laid out clearly.
+For example, a text which begins with the question “Should we raise the minimum wage?”, and then goes on to answer this question in the negative is really giving an argument the conclusion of which is the declarative sentence “We should not raise the minimum wage”.
+
+Thus, only declarative sentences can serve as the premises or conclusion of an argument.
+Let us now think a bit more carefully about what a declarative sentence is.
+As a first pass, we might think to define a declarative sentence as any sentence which can be used to make a claim about how the world is, or, what is actually the case.
+But what then should we make of the following sentences?
+
+$$
+\textrm{Either John or Mary was at the party.}
+$$
+
+$$
+\textrm{If the match is struck, it will light.}
+$$
+
+In a certain sense, one might think that the first of these sentences does not really make a claim about the world, since it fails to specify whether it was John or Mary who, in fact, attended the party.
+The same can be said of the second sentence.
+It does not say what is the case, but only what _would_ be the case (namely, that the match would light), on the condition that something else is so (namely, that the match is struck).
+But, these sorts of claims should certainly be allowed to appear in arguments, as in:
+
+$$
+\frac{\textrm{Either John or Mary was at the
+party}\hspace{2mm},\hspace{2mm}\textrm{John stayed home}}{\textrm{Mary was the
+party}}
+$$
+
+or
+
+$$
+\frac{\textrm{If the match is struck, it will
+light}\hspace{2mm},\hspace{2mm}\textrm{The match did not light}}{\textrm{The
+match was not struck}}
+$$
+
+What allows these claims to figure in arguments is simply that they are the sort of claims which can be either true or false.
+For, even if a declarative sentence is non-specific or hypothetical, it remains truth-evaluable.
+Thus, it remains either true or false that either John or Mary was at the party, and, likewise, it is either true or false that if the match is struck, it will light.
+So, we may take truth-evaluability to serve as our intuitive standard of which sentences can serve as the premises or conclusion of an argument.
+
+Let us turn now to the question of what language we ought to use to formulate the truth-evaluable sentences that will comprise our arguments.
 The specific syntax in which we will formulate arguments will not be that of a natural language such as English but instead that of an artificial language devised for the express purpose of representing certain patterns of inference.
 
 We adopt this approach so as to minimize the syntactic complexity of the arguments that we consider.
@@ -96,7 +152,7 @@ In each of the artificial languages that we will consider, the syntax of the lan
 Sentences, thus defined, are purely syntactic constructs.
 They are strings of symbols devoid of any meaning.
 Of course, our choice of the syntax for a language will in all cases be guided by semantic considerations.
-In other words, we will always have in mind a certain conception of how various linguistic items are to be interpreted and we will choose our syntax so as to ensure that the sentences in the language consist only of expressions which, when given such an interpretation, express meaningful claims.
+In other words, we will always have in mind a certain conception of how various linguistic items are to be interpreted and we will choose our syntax so as to ensure that the sentences in the language consist only of expressions which, when given such an interpretation, express truth-evaluable claims.
 
 We are now ready for our first official definition, that of an _argument_:
 

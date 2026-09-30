@@ -139,8 +139,8 @@ He then goes on to state that a two-place relation is a set of ordered pairs. 'F
 In this course, we deliberately avoid this set-centric approach.
 For one, it gives to the student the misleading impression that ordinary mathematical reasoning somehow lacks the rigor and precision needed to support genuine proof.
 Not only is this claim false, but it has the harmful pedagogical effect of leaving students somewhat at a loss as to which claims require proof and which do not.
-Such confusion, in turn, may lead them to question the validity of what is clearly a correct piece of mathematics until it has been shorn of its metaphysical excrecences by translating it into the language of sets.
-Except at the extreme fringes, such translations shed little light on questions of mathematical validity, and, for students who are new to the subject, they are only apt to confuse.
+Such confusion, in turn, may lead them to question the validity of what is clearly a correct piece of mathematics until it has been shorn of its metaphysical excrescences by translating it into the language of sets.
+Except at the extreme fringes, such translations shed little light on questions of argumentative validity, and, for students who are new to the subject, they are only apt to confuse.
 In this course, we will therefore take it for granted that ordinary mathematics, with its surplus of entities, requires no deeper set-theoretic justification.
 Functions, sequences, numbers, and just about any other item one might have encountered in a mathematics class, will all be treated on a par as first-class entities that can be freely introduced and utilized in mathematical proofs.
 
@@ -310,7 +310,10 @@ The two defining characteristics of the empty set are as follows:
 \noindent Note that from the first condition, it follows that, for any set $X$, $\emptyset\subset X$.
 To see this, let $P$ be the property possessed by all and only those $x$ such that $x\in X$.
 From the second condition it follows that no object is a member of $\emptyset$.
-To see this, consider any object $a$, and let $P$ be the property possessed by all and only those $x$ such that $x=a$.
+To see this, consider any object $a$, and let $P$ be the property possessed by all and only those $x$ such that $x=a$.[^important]
+
+[^important]: While brief, this last section is important.
+Please re-read it a time or two.
 
 ::: {#exr-power-set}
 {{< include /exercises/power-set.qmd >}}
