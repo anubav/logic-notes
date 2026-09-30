@@ -9,16 +9,16 @@ bibliography: "introduction.bib"
 Logic is one of the few subjects to appear on nearly every philosophy curriculum worldwide.
 A student who is new to the subject may naturally wonder why this should be the case.
 Why, that is, should the study of logic be regarded as a necessary prerequisite to a philosophical education?
-Puzzlement on this score is sure to increase when, upon first entry into the study of logic, one is almost immediately confronted with formulas and equations that seem more at home in a course of mathematics than philosophy.
+Puzzlement on this score is sure to increase when, upon first entry into the study of logic, one is almost immediately confronted with symbols, formulas, and equations that seem more at home in a course of mathematics than philosophy.
 
 One potential source of confusion as to logic's proper place within philosophy derives from the fact that what might be termed _logicality_---or the capacity to reason well---is no more necessary an intellectual virtue for the philosopher than it is for, say, the chemist, the historian, or the statistician.
 And yet in other disciplines one does not find logic being taught as its own subject.
 History students, for example, are expected to acquire a working knowledge of what counts as sound historical reasoning not through any direct instruction as to the principles of logic that apply in their field, but instead by studying the work of professional historians and undertaking to produce such work on their own.
-Indeed, even in the domain of mathematics, where sound reasoning is arguably constitutive of the discipline and not merely an aspect of its methodology, students, by and large, are provided with no special training in logic.
+Indeed, even in the domain of mathematics, where sound reasoning is arguably constitutive of the discipline and not merely one aspect of its methodology, students, by and large, are provided with no special training in logic.
 Instead, a working knowledge of the methods of proof by which mathematicians establish theorems is viewed as a natural byproduct of a proper mathematical education.
 
 Why then do philosophers approach the study of logic so differently?
-Why do they treat logic as having its own distinctive subject matter and not merely as a part of philosophical methodology?
+Why do they treat logic as having its own distinctive subject matter and not merely as a part of philosophical method?
 The answer, in short, is that reasoning, or argumentation, is not merely something that philosophers do and aspire to do well.
 It is also among the principal _objects_ of philosophical scrutiny.
 
@@ -50,13 +50,10 @@ For example, in the case of the [sorites paradox](#sorites){.unstyled-link}, the
 Identifying the core assumptions at work in a fallacy is a good start, but one must next explain how exactly these assumptions are utilized in the paradoxical argument to underwrite the fallacious conclusion.
 It is at this stage of the analysis that one typically resorts to the formalisms of logic to represent the reasoning more precisely.
 
-Let $H$ (for "heap") be a predicate which applies to the positive integers ($1,2,3,\ldots$) and which is defined as follows:
-$$
-  H(n) \textrm{ iff an accumulation of $n$ grains of sand is a heap}
-$$
-
-Let $l$ be a large enough number such that $H(l)$ is clearly true and let $s$ be a small enough number such that $H(s)$ is clearly false.
+Let $H$ (for "heap") be a predicate which applies to the positive integers ($1,2,3,\ldots$) and which is defined as follows: $H(n)$ iff \[sic\][^iff] an accumulation of $n$ graisn of sand is a heap. Let $l$ be a large enough number such that $H(l)$ is clearly true and let $s$ be a small enough number such that $H(s)$ is clearly false.
 Then, the paradoxical line of reasoning outlined above can be represented as follows:
+
+[^iff]: See @sec-general-notation-iff.
 
 :::{.lproof}
 
@@ -114,7 +111,7 @@ However, there are certain systems of logic which, despite their limitations, ha
 These systems of logic include classical propositional logic, first-order quantificational logic, and the normal modal extensions thereof.
 A great deal of conceptual insight can be gained simply by formalizing arguments as derivations in these systems, and one can be certain that any proposed solution to a philosophical problem which calls for a significant revision to one of these systems is venturing into deep philosophical waters.
 Before daring such depths, it is therefore essential for any student of analytic philosophy to gain facility in working with these standard systems of logic and to come to understand both their inherent capacities and limitations.
-This is what we hope to achieve in this course.
+This is what we aim to achieve in this course.
 
 ::: {#exr-outside-reading}
 {{< include /exercises/outside-reading.qmd >}}
