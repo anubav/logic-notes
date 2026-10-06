@@ -36,5 +36,3 @@ format:
       - assets/styles/tweaks.css
       - assets/styles/custom.css
     toc: true
-    include-in-header:
-      - assets/includes/scripts.html
