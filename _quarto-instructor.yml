@@ -10,4 +10,4 @@ project:
 
 book:
   appendices:
-    - solutions/solutions-appendix.qmd
+    - solutions/solutions.qmd
