@@ -81,7 +81,7 @@ An argument is a collection of sentences, one of which is distinguished as that 
 The distinguished sentence is referred to as the argument's _conclusion_ and the sentences offered in its support as the argument's _premises_.
 
 What exactly do we mean by a sentence?
-The grammatical concept of a sentence in English is that of a closed, self-contained linguistic unit including at least one independent clause.
+The grammatical concept of a sentence in English is that of a closed self-contained linguistic unit including at least one independent clause.
 But sentences in English, thus understood, can serve a variety different functions.
 The four functional categories of sentences that usually appear in grammar textbooks are as follows:
 
