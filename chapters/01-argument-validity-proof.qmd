@@ -244,6 +244,7 @@ To express this, we write:
    $$
    \Ga\models_V\ph
    $$
+
 :::
 
 The symbol '$\models$' is sometimes referred to as the double turnstile, and its counterpart symbol '$\proves$' as the single turnstile.
