@@ -162,6 +162,7 @@ We denote the argument whose premises comprise the set of sentences $\Gamma$ and
   $$
     \Gamma\proves\ph 
   $$
+
 :::
 
 For the sake of readability, when expressing arguments, we will often omit the outer braces from the premise set.
