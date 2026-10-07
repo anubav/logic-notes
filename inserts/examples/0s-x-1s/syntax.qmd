@@ -26,7 +26,7 @@ n_1 \times n_2 \times \cdots \times n_k
 $$
 where $n_1,\ldots,n_k$ are numerals.
 
-The sole grammatical rule for the language is as follows: an expression is a _sentence_ of the language if it is of the form $\al=\be$, where $\al$ and $\be$ are numerical expressions.
+The sole grammatical rule for the language is: an expression is a _sentence_ of the language if it is of the form $\al=\be$, where $\al$ and $\be$ are numerical expressions.
 In accordance with this rule, the following expressions are all sentences of the language:
 
 :::: {.columns}

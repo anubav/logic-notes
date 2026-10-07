@@ -14,7 +14,7 @@ For example, the following tree is a formation tree for the expression: $1\times
 (a). An expression $\ph$ is a numerical expression iff there is a formation tree for $\ph$, but a single numerical expression can have multiple distinct formation trees.
      Give three distinct formation trees for the numerical expression $0\times 1\times x\times 0$.
 
-(b). Suppose we extend the language $L_\times$ by adding to its alphabet the left and right parentheses, '(' and '')'.
+(b). Suppose we extend the language $L_\times$ by adding to its alphabet the left and right parentheses, '(' and ')'.
      Rewrite the definitions of a numerical expression and a formation tree so as to ensure that every numerical expression has exactly one formation tree.
 
 (c).$^*$ Show that the number of distinct formation trees for a numerical expression containing $k$ numerals is exactly

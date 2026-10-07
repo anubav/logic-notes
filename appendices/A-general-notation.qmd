@@ -275,6 +275,10 @@ The Venn diagrams in @fig-set-operations can help to visualize the effect of per
 Venn diagrams illustrating the set-theoretic operations of union, intersection, relative complement, and complement.
 :::
 
+::: {#exr-venn-diagrams}
+{{< include /exercises/venn-diagrams.qmd >}}
+:::
+
 ::: {#exr-set-facts}
 {{< include /exercises/set-facts.qmd >}}
 :::

@@ -48,6 +48,6 @@ Thus, for example, with respect to the language $L_\times$, it will be convenien
 Let $\al$ be a numerical expression.
 For $i=0,1$, let $\sigma_i(\al)=0$ if the result of substituting $\sigma_i(x)$ for each occurrence of $x$ in $\al$ is an arithmetical expression which evaluates to $0$.
 Otherwise, $\sigma_i(\al)=1$.
-Adopting this notation, the above semantic rule can now be expressed as follows:
+Adopting this notation, the above semantic rule can now be expressed more concisely as follows:
 
 For $i=0,1$, $val^{\sigma_i}(\al=\be)=\true$ iff $\sigma_i(\al)=\sigma_i(\be)$.
