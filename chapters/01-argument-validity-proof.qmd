@@ -503,26 +503,28 @@ To indicate that $\ph$ and $\psi$ are logically equivalent we write $\ph\equiv\p
 
 ## Proofs {#sec-argument-validity-proof-proofs}
 
-A method of reasoning is any method or procedure by which one proposes to assess the validity of an argument.
-Given the definition of validity offered in the previous section, it may be thought that the most direct method of reasoning consists in evaluating the truth values of the sentences comprising that argument across all the possible interpretations of the language.
-Having done so, one can then conclude that the argument is valid just in case no interpretation is found on which all of the premises are true and the conclusion false.
+We have, thus far, discussed how to represent arguments and what it means for an argument to be valid.
+Next, we turn to our third, and final, topic---reasoning.
+A method of reasoning is any method or procedure by means of which one assesses the validity of an argument.
+Given the definition of validity offered in the previous section, it may be thought that the most direct method of reasoning consists in evaluating the truth values of the sentences comprising that argument under all the possible interpretations of the language.
+Having done so, one may then conclude that the argument is valid just in case no counterexample is found under which all of the premises are true and the conclusion false.
 
 While the correctness of this procedure follows immediately from our definition of argumentative validity, it clearly does not represent the way in which reasoning ordinarily proceeds.
-Take, for example, the arithmetical argument:
+Take, for example, the following arithmetical argument of the sort that one might encounter in a high school algebra course:
 
 $$
 x + 2y = -2, y > 1 \proves 8 < -2x
 $$
 
 When we assess this argument arithmetically, we stipulate that its validity is to be assessed relative to the ordinary semantics for arithmetic.
-This means that the numerals '1', '2' and '8' refer to the numbers 1, 2 and 8, respectively; the symbol '+' denotes the operation of addition; and the symbols '=', '<' and '>' stand for the relations of equality, being less than, and being greater than, respectively.
+This means that the numerals '1', '2' and '8' refer to the numbers 1, 2 and 8, respectively; the symbol '+' to the operation of addition; and the symbols '=', '<' and '>' to the relations of equality, being less than, and being greater than, respectively.
 These are the logical elements of the syntax appearing in the argument.
 The non-logical elements are the variables $x$ and $y$, which may stand for any numbers.
 The argument is valid just in case no matter what numbers the variables $x$ and $y$ stand for: if it is true that $x+2y=-2$ and $y>1$, then it is also true that $8<-2x$.
 
-Of course, if one were charged with the task of assessing the validity of this argument---say, in a mathematics class---one would most certainly _not_ proceed by substituting in particular numerical values for $x$ and $y$ in an effort to ascertain whether or not there exists a particular interpretation of these variables on which the premises of the argument are true and its conclusion false.
-For one, there are, infinitely many such intepretations.
-Instead, to assess this argument's validity, a more feasible approach would be to attempt to _derive_ the conclusion from the premises using the basic rules of algebra.
+Of course, if one were charged with the task of assessing the validity of this argument---say, in an algebra class---one would most certainly _not_ proceed by substituting in particular numerical values for $x$ and $y$ in an effort to ascertain whether or not there exists a particular interpretation of these variables under which the premises of the argument are true and its conclusion false.
+For one, there are, infinitely many such interpretations.
+Instead, to assess this argument's validity, a more feasible approach would be to attempt to _prove_ the conclusion from the premises using the basic rules of algebra.
 
 In the typical language in which algebraic derivations are expressed, a demonstration of this argument's validity could take the following form:
 
@@ -539,10 +541,97 @@ $$
 Multiplying both sides of this inequality by $-2$ yields $8 < - 2x$, which is the desired conclusion.
 :::
 
-Taking this example as our model, when we speak of a method of reasoning, we will henceforth have in mind methods which employ as a standard for argumentative validity the existence or non-existence of a derivation---or proof---of an argument's conclusion from its premises.
+Taking this example as our model, when we speak of a method of reasoning, we will henceforth have in mind methods which employ as a standard for argumentative validity the existence or non-existence of a _proof_ of an argument's conclusion from its premises.
 In order to make precise this idea we must begin by formulating in mathematically precise terms what we mean by a _proof_.
 
-To begin, let us reconsider the above algebraic derivation and try to express the reasoning in slightly more detail.
+Let us consider again the above algebraic derivation.
+In this proof, we start with one of the premises, namely $y > 1$.
+We then transform this premise into another sentence, $2y > 2$, by applying a certain rule of algebra, namely the rule which allows us to multiply both sides of an inequality by any positive number.
+We might transcribe this transformation as follows:
+
+:::{.lproof}
+
+    1. y > 1 [Premise]
+    2. 2\cdot y > 2 [Multiply by 2: 1]
+
+:::
+
+The note at the end of the last line indicates that we are applying the rule "Multiply by 2" to line 1.
+This rule can be formulated as follows:
+
+(Multiply by 2) For any numerical expressions $\al$ and $\be$: from $\al > \be$, it follows that $2\cdot \al > 2\cdot \be$.
+
+Note, however, that if we are strict about how we apply this rule, it doesn't quite get us what we want.
+For, if we apply the rule as stated to the sentence $y > 1$, the result is $2\cdot y>2\cdot 1$---not $2\cdot y > 2$.
+Now, of course, we all know it to be a basic fact about arithmetic that $2\cdot 1 = 2$, and so we naturally perform the requisite substitution in our head.
+But to give a more complete transcription of the reasoning here, let us be explicit and include the substition as another step in the proof:
+
+:::{.lproof}
+
+    1. y > 1 [Premise]
+    2. 2\cdot y > 2\cdot 1  [Multiply by 2: 1]
+    3. 2\cdot 1 = 2        [Arithmetic]
+    4. 2\cdot y > 2        [Substitution of Equals: 2, 3]
+
+:::
+
+Here we appeal to the basic arithmetical fact that $2\cdot 1 = 2$ in line 3 of the proof.
+A rule of substitution is then applied to lines 2 and 3 of the proof to give us line 4.
+This substitution rule can be stated as follows:
+
+(Substitution of Equals) Let $\psi$ be the result of substituting one numerical expression $\beta$ for another numerical expression $\alpha$ in the sentence $\ph$.
+Then, from $\alpha=\beta$ and $\ph$, it follows that $\psi$.
+
+While the proof is now correct, the rule Multiply by 2 seems a bit too specific.
+After all, we don't want to have to posit separate rules for every possible number that we might want to utilize as a multiplier in an algebraic proof.
+A better rule, that licenses the general sort of transformation that we have in mind, is:
+
+(Multiply by $n>0$) For any number $n$, and any numerical expressions $\al$ and $\be$: from $n > 0$ and $\al > \be$, it follows that $n\cdot \al > n\cdot \be$.
+
+To apply this more general rule in our proof, we now have to cite a further arithmetical fact, namely, that $2 > 0$.
+The proof, so far, now looks like this:
+
+:::{.lproof}
+
+    1. y > 1 [Premise]
+    2. 2 > 0 [Arithmetic]
+    3. 2\cdot y > 2\cdot 1 [Multiply by $n > 0$: 1, 2]
+    4. 2\cdot 1 = 2 [Arithmetic]
+    5. 2\cdot y > 2 [Substitution of Equals: 3, 4]
+
+:::
+
+This, of course, is only the first step of the reasoning.
+But if we continue in this way, spelling out the proof in detail, one step at a time, eventually the reasoning will terminate with the conclusion of the argument appearing as the last line of the proof.
+
+:::{.lproof}
+
+    1. y > 1 [Premise]
+    2. 2 > 0 [Arithmetic]
+    3. 2\cdot y > 2\cdot 1 [Multiply by $n > 0$: 1, 2]
+    4. 2\cdot 1 = 2 [Arithmetic]
+    5. 2\cdot y > 2 [Substitution of Equals: 3, 4]
+    ...
+    n. 8 < - 2\cdot x [Some Rule: ?, \ldots, ?]
+
+:::
+
+:::{#exr-arithmetical-proof .exercise}
+{{< include /exercises/arithmetical-proof.qmd >}}
+:::
+
+We will take this expanded arithmetical derivation as a model for the simplest sort of proofs that we will consider in the context of our formal languages.
+Later on in the course, we will consider other kinds of proofs with a more complicated structure.
+
+What is important to note about proofs such as this is that all of the claims that are asserted in the course of the reasoning fall into one of the following three categories:
+
+1. Premises of the argument (e.g., $y > 1$).
+
+2. Basic facts of arithmetic (e.g., $2>0$ or $2\cdot 1 = 2$).
+
+3. The result of applying a rule of inference to claims already established in the proof.
+
+<!-- To begin, let us reconsider the above algebraic derivation and try to express the reasoning in slightly more detail.
 In the abbreviated form of the proof given above, the algebraic rules that we appealed to were left tacit and a number of intermediate steps skipped over.
 To bring out these steps, let us, for the sake of illustration, impose strict constraints on what we are allowed to take for granted in the reasoning.
 In particular, we will assume only that:
@@ -621,9 +710,9 @@ This can be emphasized by omitting from the proof such inferential markers as 's
 :::
 
 We will take this expanded arithmetical derivation as a model for the simplest sort of proofs that we will consider in the context of our formal languages.
-Later on in the course, we will consider other kinds of proofs with a more complicated structure.
+Later on in the course, we will consider other kinds of proofs with a more complicated structure. -->
 
-We first observe that a proof of the above sort is always given relative to both a set of elementary, or axiomatic, truths, which we can freely take for granted in our reasoning, and a system of rules by which we can derive new sentences from sentences already established in the proof.
+Hence, a proof of the above sort is always given relative to both a set of elementary claims, or what we shall call _axioms_, which we can freely take for granted in our reasoning, and a system of rules by which we can derive new sentences from sentences already established in the proof.
 Taken together, these axioms and rules form what we shall call a proof system:
 
 ::: {#def-proof-system .definition} 
@@ -631,6 +720,14 @@ Taken together, these axioms and rules form what we shall call a proof system:
 A _proof system_ for a language $L$ consists of (i) a set of sentences of $L$, the members of which are referred to as _axioms_; and (ii) a set of rules of inference, each of which states that certain sentences can be inferred from others.
 
 :::
+
+Note that this definition makes reference to the notion of `a rule of inference'.
+But what exactly is a rule of inference?
+This turns out to be one of the deepest and most challenging questions of logic.
+For now, we will largely evade the question and make only one small movement in the direction of a more precise answer.
+One requirement that we will require our rules of inference to possess is that they must be computable: that is, for any given output of the rule that results from its being applied to a certain input, it must in principle be possible for a computer to check whether or not the output is indeed the correct result of applying that rule to said input.
+So, were one to 'consult God' or 'toss a coin' to determine what to write down next in a proof, one is not thereby applying a rule of inference, and so, in our sense of the term, can not be properly said to be reasoning.
+There is much more to say about the topic of rules, but for now, that will suffice.
 
 We can now define what we mean by a proof:
 
@@ -659,7 +756,7 @@ It is important to stress that this definition of proof makes no reference whats
 Concepts such as truth and falsehood, meaning, interpretation, etc., nowhere figure in our formal understanding of proof.
 Rather, a proof is a purely syntactic construct, which can be thought of as the output of an abstract calculus which operates on symbolic expressions in complete ignorance as to how they are to interpreted.
 As such, the standard of provability is, at a conceptual level, entirely distinct from that of validity.
-The former is syntactic, the latter semantic.
+The former is syntactic, while the latter is semantic.
 It will be crucial to keep this distinction in mind as we proceed.
 
 Henceforth, by a 'method of reasoning' we will simply mean a system of proof.
@@ -731,11 +828,11 @@ This is often regarded as one of the first foundational results in mathematical 
 In upcoming chapters, we will be studying proof systems across a wide variety of syntactic and semantic contexts and we will show that these systems are both sound and complete.
 In the course of doing so, it will quickly become evident that there exists a stark asymmetry in the relative difficulty of these two tasks.
 To show that a proof system is sound is, in general, a rather easy task, but to show that it is complete is often quite difficult and requires some degree of mathematical ingenuity.
-Why this asymmetry?
+Whence this asymmetry?
 
 The soundness of a proof system $\mathbf{D}$ asserts that, for any arbitrary set of sentences $\Ga$, every sentence that is a deductive consequence of $\Ga$ in $\mathbf{D}$ is a logical consequence of $\Ga$.
 Completeness, on the other hand, asserts that every logical consequence of $\Ga$ is a deductive consequence of $\Ga$.
-The relative ease with which soundness results can be proven when compared to completeness results is owing to the fact that, unlike the set of all logical consequences of $\Ga$, that is:
+The relative ease with which soundness results can be proven when compared to completeness results is owing to the fact that, unlike the set of all logical consequences of $\Ga$, that is, the set:
 $$
 \{\ph: \Ga\models\ph\}
 $$
@@ -743,7 +840,8 @@ the set of all deductive consequences of $\Ga$:
 $$
 \{\ph: \Ga\proves_{\mathbf{D}}\ph\}
 $$
-can be given a straightforward inductive definition, as follows:
+can be given a straightforward inductive definition.
+This definition follows directly from our idea of a proof:
 
 1. If $\ph\in\Ga$, then $\Ga\proves_\mathbf{D}\ph$.
 
@@ -769,7 +867,7 @@ $$
 \ph_1,\ldots,\ph_n\models\psi
 $$
 
-For, if $\Ga\models\ph_i$, for $i=1,\ldots,n$, by repeated applications of @thm-semantic-structure.(iii), it follows that $\Ga\models\psi$.
+For, in this case, if $\Ga\models\ph_i$, for $i=1,\ldots,n$, by repeated applications of @thm-semantic-structure.(iii), it follows that $\Ga\models\psi$.
 
 Hence, to establish the soundness of a proof system $\mathbf{D}$ it suffices to show:
 

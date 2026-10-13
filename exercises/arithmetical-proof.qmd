@@ -1,0 +1,5 @@
+Complete the arithmetical proof started above.
+Add any additional rules that are required to deduce the conclusion from the premises.
+The only arithmetical facts that you are allowed to take for granted in your proof are the following:
+
+1. Given any two variable-free numerical expressions, whether these two expressions denote the same number or, if not, which denotes the greater number (e.g., $1+4=5$, $2\cdot 3>5$, $-3>-6$).
