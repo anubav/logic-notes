@@ -10,4 +10,4 @@ $$
 what is the most number that can be valid with respect to a single truth valuation (i.e., a singleton set of truth valuations)?
 What is the most that can be invalid with respect to a single truth valuation?
 
-(c).$^*$  Show that if $V$ is a set consisting of exactly $n-1$ truth valuations, then $\ph_i\models\ph_j$ for some $i\neq j$.
+(c).$^*$  Show that if $V$ is a set consisting of exactly $2k$ truth valuations, where $n > \frac{(2k)!}{k!k!}$, then $\ph_i\models\ph_j$ for some $i\neq j$.
