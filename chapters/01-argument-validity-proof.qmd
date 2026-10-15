@@ -820,10 +820,7 @@ A proof system $\mathbf{D}$ is _complete_ if, for any set of sentences $\Gamma$ 
 
 Taken together, the soundness and completeness of a proof system means that an argument is valid if and only if its conclusion is provable in that system from its premises.
 When we have shown this, we know that the proof system codifies exactly the system of inferences validated by the intended meanings of the logical elements of the syntax.
-Thus, when we reason by giving proofs in this system, we can be sure that, in so doing, there is no principled threat of error or omission.[^Godel]
-
-[^Godel]: The existence of a sound and complete proof system for first-order quantificational logic was proven by Kurt Gödel in his doctoral dissertation of 1929.
-This is often regarded as one of the first foundational results in mathematical logic.
+Thus, when we reason by giving proofs in this system, we can be sure that, in so doing, there is no principled threat of error or omission.
 
 In upcoming chapters, we will be studying proof systems across a wide variety of syntactic and semantic contexts and we will show that these systems are both sound and complete.
 In the course of doing so, it will quickly become evident that there exists a stark asymmetry in the relative difficulty of these two tasks.
@@ -861,13 +858,14 @@ Appealing to the above inductive definition of this set, it suffices to show:
 
 3. If $\Ga\models\ph_i$, for $i=1,\ldots,n$, and $\psi$ follows from $\ph_1,\ldots,\ph_n$ by some rule of inference of $\mathbf{D}$, then $\Ga\models\psi$.
 
-Clause 1 is a direct consequence of our definition of validity, and so may be taken for granted---see @thm-semantic-structure.(i).
-Moreover, it suffices to establish clause 3 to show that if $\psi$ follows from $\ph_1,\ldots,\ph_n$, by some rule of inference of $\mathbf{D}$, then:
+The first claim is a direct consequence of our definition of validity, and so may be taken for granted---see @thm-semantic-structure.(i).
+Moreover, it suffices to establish the third claim to show that if $\psi$ follows from $\ph_1,\ldots,\ph_n$, by some rule of inference of $\mathbf{D}$, then:
 $$
 \ph_1,\ldots,\ph_n\models\psi
 $$
 
-For, in this case, if $\Ga\models\ph_i$, for $i=1,\ldots,n$, by repeated applications of @thm-semantic-structure.(iii), it follows that $\Ga\models\psi$.
+For, suppose $\Ga\models\ph_i$, for $i=1,\ldots,n$.
+Then, by repeated applications of @thm-semantic-structure.(iii), it follows that $\Ga\models\psi$.
 
 Hence, to establish the soundness of a proof system $\mathbf{D}$ it suffices to show:
 
@@ -879,7 +877,10 @@ This simple strategy for establishing soundness is available because the idea of
 The idea of validity, by contrast, is not inductive.
 The valid arguments are not built up recursively, but are rather defined, in negative existential terms, as those arguments which lack a semantic counterexample.
 As such, there is no obvious way to establish the completeness of a proof system by the method of induction.
-As we shall see in upcoming chapters, completeness results require a defter touch.
+As a consequence, completeness results require a defter touch.[^Godel]
+
+[^Godel]: The existence of a complete proof system for first-order quantificational logic was established by Kurt Gödel in his doctoral dissertation of 1929.
+Gödel's completeness theorem is often regarded as the first foundational result in mathematical logic.
 
 :::{#exr-relative-soundness-completeness .exercise}
 {{< include /exercises/relative-soundness-completeness.qmd >}}

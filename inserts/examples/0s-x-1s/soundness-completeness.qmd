@@ -160,7 +160,7 @@ Hence $\Ga^*\models\ph^*$.
 :::
 
 Next, we must show that the proof system $\mathbf{D}$ is complete on the small fragment of the language consisting of only the reduced forms of sentences.
-Since there only a handful of arguments in this fragment of the language, we can confirm that this is so by a manual, "brute force" accounting.
+Since there are only a handful of arguments in this fragment of the language, we can confirm that this is so by a manual, "brute force" accounting.
 
 :::{#lem-completeness-reduced .lemma}
 If $\Gamma^*\models \ph^*$, then $\Gamma^*\provest\ph^*$.
@@ -229,7 +229,7 @@ By the soundness of $\t$, it follows that $\ph\equiv\psi$, and so $\ph$ and $\ps
 :::
 :::
 
-This thoerem will help us to show that the reduced form of a sentence is provable from that sentence (and vice versa) in $\t$.
+This theorem will help us to show that the reduced form of a sentence is provable from that sentence (and vice versa) in $\t$.
 
 :::{#lem-T-reduction .lemma}
 $\ph\provest\ph^*$, for any sentence $\ph$.
