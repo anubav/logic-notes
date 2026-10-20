@@ -571,7 +571,7 @@ The alternative version of the proof, in which the conclusion of the first proof
 {{< include /inserts/examples/smiley/relevance.qmd >}}
 :::
 
-## The Extensional Soundness and Completeness of $\s$ {#sec-syllogistic-logic-the-extensional-soundness-and-completeness-of}
+## The Soundness and Completeness of $\s$ {#sec-syllogistic-logic-the-soundness-and-completeness-of}
 
 ### The Soundness of $\s$
 

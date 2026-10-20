@@ -12,7 +12,7 @@ The union of two sets $X$ and $Y$ can be characterized as the smallest set conta
 This, however, is not so for the union of two multisets.
 To see this, let $X\sqcup Y$ be the multiset $Z$ such that (i) $X\subset Z$ and $Y\subset Z$ and (ii) for any multiset $W$: if $X\subset W$ and $Y\subset W$, then $Z\subset W$.
 
-c. Supply multisets $X$ and $Y$ for which $X\cup\Y\neq X\sqcup Y$.
+c. Supply multisets $X$ and $Y$ for which $X\cup Y\neq X\sqcup Y$.
 
 d. Express the function $\mathbf{N}_{X\sqcup Y}$ in terms of $\mathbf{N}_X$ and $\mathbf{N}_Y$.
 
