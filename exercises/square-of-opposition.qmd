@@ -21,7 +21,7 @@ Add arrows where appropriate to the following diagram.[^square-of-opposition] Us
 
 ![](/static/images/empty-square-of-opposition.svg){width=200 fig-align="center" fig-alt="Empty Square of Opposition"}
 
-[^square-of-opposition]: The diagram that you are asked to produce in this exercise to visually represent these relations was first constructed by the Roman philosopher Boethius (c.
+[^square-of-opposition]: The diagram that you are asked to produce in this exercise was first constructed by the Roman philosopher Boethius (c.
 480–524 CE), who labeled it the “square of opposition”.
 The square of opposition became a fixtue of medieval logic and was the standard logical diagram utilized in scholastic education.
 It was widely reproduced (and, in some cases elaborated) by later authors such as Peter Abelard, William of Sherwood, Peter of Spain, and John Buridan.

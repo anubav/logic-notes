@@ -77,7 +77,7 @@ To form sentences, the two terms in this order were connected by copular phrases
 
 ### Extensional Semantics
 
-It remains a matter of some dispute as to the correct interpretation of the categorical sentences dealt with in Aristotle's logic.[^dictum-de-omni] However, one prominent reading of these sentences renders them as follows:
+It remains a matter of scholarly dispute as to the correct interpretation of the categorical sentences dealt with in Aristotle's logic.[^dictum-de-omni] However, one prominent reading of these sentences renders them as follows:
 
 $$
 \begin{align*}
@@ -96,10 +96,10 @@ Our semantics for the language $\Ls$ will adopt this reading of the sentences.
 One such explicit remark is the passage that scholars now refer to as the _dictum de omni et nullo_, in which Aristotle appears to state truth conditions for universal affirmative propositions (and, by analogy, universal negative ones).
 The passage states: "We use the expression 'predicated of every' when none of the subject can be taken of which the other term cannot be said, and we use 'predicated of none' likewise" (_Prior Analytics_, 24b28--30).
 
-The non-logical elements of the syntax are the terms.
+In formulating a semantics for the language, we will take the non-logical elements of the syntax to be the terms.
 Recall that this means that the semantic values of the terms will vary from one interpretation of the language to the next.
 What are the possible semantic values assigned to the terms on a given interpretation?
-While it is again a matter for scholarly debate as to Aristotle's own intended interpretation of the terms, here we adopt the conventional approach of interpreting the terms 'extensionally'.
+While it is again a matter for scholarly debate as to Aristotle's own intended interpretation, here we adopt the conventional approach of interpreting the terms 'extensionally'.
 The extension of a common noun phrase is the set of all individual objects denoted by that phrase.
 So, for example, the extension of the term 'cat' is the set of all cats, the extension of 'cold-blooded' the set of all cold-blooded creatures.[^intension] Thus, in an extensional semantics, a term will be interpreted as a set of objects, the members of which are all and only those objects denoted by the term.
 
@@ -167,12 +167,12 @@ $$
 where $A$, $B$, and $C$ are any terms.
 To show that this argument is valid, we must confirm that, for every model, if the premises are all true, so too is the conclusion.
 Let $\M=(\W,\si)$ be a model such that $val^\M(\some{A}{B})=val^\M(\all{B}{C})=\true$.
-By our semantic rule for particular affirmative sentences, $val^\M(\some{A}{B})=\true$ iff $\si(A)\inter\si(B)\neq\emptyset$, and so, in this case, there exists some object $x\in\W$, such that $x\in\si(A)$ and $x\in\si(B)$.
+By our semantic rule for particular affirmative sentences, $val^\M(\some{A}{B})=\true$ iff $\si(A)\inter\si(B)\neq\emptyset$, and so, in this case, there exists some object $a\in\W$, such that $a\in\si(A)$ and $a\in\si(B)$.
 Now, by our semantic rule for universal affirmative sentences, $val^\M(\all{B}{C})=\true$ iff $\si(B)\subset\si(C)$.
-But this means that, for all $y\in \W$, if $y\in \si(B)$, then $y\in\si(C)$.
-In particular, this is true of $x$.
-So, $x\in \si(C)$.
-But then $\si(B)\inter\si(C)\neq \emptyset$ and so $val^\M(\some{A}{C})=\true$.
+This means that, for all $x\in \W$, if $x\in \si(B)$, then $x\in\si(C)$.
+In particular, this is true of $a$.
+So, $a\in \si(C)$.
+But since $a\in\si(A)$, it follows that $\si(A)\inter\si(C)\neq \emptyset$ and so $val^\M(\some{A}{C})=\true$.
 Hence, the argument is valid, i.e.:
 $$
 \some{A}{B}, \all{B}{C}\models\some{A}{C}
@@ -183,7 +183,7 @@ Now, let's consider an invalid argument:
 
 $$
 \no{A}{B},
-\all{B}{C}\proves \no{A}{C}
+\all{B}{C}\not\models \no{A}{C}
 $$
 
 To show that this argument is invalid it suffices to identify a counterexample, that is, a model in which the premises are true but the conclusion is false.
@@ -306,7 +306,7 @@ $$
 \some{A}{B}, \all{B}{C}\proves\some{A}{C}
 $$
 To enable the proof of such arguments, we could strengthen the system $\S$ by adding to it additional rules of inference.
-Perhaps surprisingly, however, this is not the primary approach adopted by Aristotle.
+This, however, is not the primary approach adopted by Aristotle.
 To prove such arguments, Aristotle instead employs a new method of proof which he have not yet considered, the method of _reductio ad absurdum_ or proof by contradiction.
 To formalize proofs by contradiction, we have to revisit our original definition of a proof system and expand it so as to accommodate what we shall refer to as 'hypothetical' methods of proof.
 
