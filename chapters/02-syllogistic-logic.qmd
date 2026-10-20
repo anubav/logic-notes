@@ -12,9 +12,9 @@ crossref:
 ## Introduction {#sec-syllogistic-logic-introduction}
 
 It is impossible to overstate the influence of Aristotle's theory of the syllogism on the study of formal logic.
-Not only did it mark the first significant contribution to the field, but it was the starting point for nearly all subsequent investigations into logic for over two millenia.[^aristotle]  Indeed, throughout much of the history of logic---and even still today, albeit only colloquially---the phrases 'valid argument' and 'syllogism' were treated as synonymous.
+Not only did it mark the first significant contribution to the field, but it was the starting point for nearly all subsequent investigations into logic for well over two millenia.[^aristotle]  Indeed, throughout much of the history of logic---and even still today, if only colloquially---the phrases 'valid argument' and 'syllogism' were treated as synonymous.
 
-The core of Aristotle's logic is presented in the opening chapters of his _Prior Analytics_, written around 350 BCE.[^prior-analytics] There, Aristotle develops a system of logic designed to capture the inferential relations that obtain between propositions of the following form:
+The core of Aristotle's theory of the syllogism is presented in the opening chapters of his _Prior Analytics_, written around 350 BCE.[^prior-analytics] There, Aristotle develops a system of logic designed to capture the inferential relations that obtain between propositions of the following form:
 
 [^aristotle]: Immanuel Kant pronounced, in the preface to the 1787 second edition of his _Critique of Pure Reason_, that "since the time of Aristotle, [logic] has not had to go a single step backwards, unless we count the abolition of a few dispensible subtleties or the more distinct determination of its presentation...
 What is further remarkable about logic is that until now it has also been unable to take a single step forward, and therefore seems to all appearance to be finished and complete" (@Kant1999-pr, p. 106).
@@ -107,7 +107,7 @@ So, for example, the extension of the term 'cat' is the set of all cats, the ext
 Thus, for example, while 'human' and 'featherless biped' have the same extension since every human is a featherless biped and vice versa, they have different intensions since the two phrases differ in meaning.
 For a more detailed discussion of the distinction between extension and intension, see @Carnap1988-nm, ch. 1.
 
-But what exactly do we mean by an _object_?
+What exactly do we mean by an _object_?
 For semantics purposes, we need not specify what an object is.
 An object is simply a member of a certain set which serves as the background domain for our interpretations.
 It is customary to allow this domain of objects to vary, and to thus serve as a contextual parameter in our semantics.
@@ -177,7 +177,54 @@ Hence, the argument is valid, i.e.:
 $$
 \some{A}{B}, \all{B}{C}\models\some{A}{C}
 $$
-Aristotle referred to valid argument forms such as this as _syllogisms_.
+Aristotle referred to valid argument forms such as this as _syllogisms_ (see @exr-syllogistic-figures below).
+
+Now, let's consider an invalid argument:
+
+$$
+\no{A}{B},
+\all{B}{C}\proves \no{A}{C}
+$$
+
+To show that this argument is invalid it suffices to identify a counterexample, that is, a model in which the premises are true but the conclusion is false.
+Let $a$, $b$, and $c$ be any three distinct objects in $\W$, and let $\si$ be an interpretation satisfying:
+
+$$
+\si(A) = \{a, b\}
+$$
+
+$$
+\si(B) = \{c\}
+$$
+
+$$
+\si(C) = \{b, c\}
+$$
+
+It is easy to verify that on the model $\M=(\W,\si)$, the premises of the argument are true and its conclusion is false:
+
+$$
+\si(A)\inter\si(B) = \{a, b\}\inter\{c\} = \emptyset \hspace{3mm}\Rightarrow\hspace{3mm}
+val^\M(\no{A}{B}) = \true
+$$
+
+$$
+\si(B) = \{c\} \subset \{b,c\} = \si(C) \hspace{3mm}\Rightarrow\hspace{3mm}
+val^\M(\all{B}{C}) = \true
+$$
+
+$$
+\si(A)\inter\si(C) = \{a, b\}\inter\{b, c\} \neq \emptyset \hspace{3mm}\Rightarrow\hspace{3mm}
+val^\M(\no{A}{C}) = \false
+$$
+
+We can visually represent this counterexample as follows:
+
+![](/static/images/syllogism-counterexample.svg){width=450 fig-align="center" fig-alt="Syllogistic counterexample"}
+
+:::{#exr-syllogisms-validity .exercise}
+{{< include /exercises/syllogisms-validity.qmd >}}
+:::
 
 :::{#exr-syllogistic-figures .exercise}
 {{< include /exercises/syllogistic-figures.qmd >}}
