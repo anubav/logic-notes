@@ -304,8 +304,8 @@ If $\Ga^*\provest \ph^*$, then $\Ga\provest\ph$.
 
 :::{.proof}
 Suppose that $\Ga^*\provest \ph^*$, and consider a proof of $\ph^*$ from $\Ga^*$.
-Since proofs are finite, only finitely many sentences in $\Ga^*$ are appealed to as premises in this proof.
-If these sentences are $\ph_1^*,\ldots,\ph_n^*$, then $\ph_1^*,\ldots,\ph_n^*\provest\ph^*$.
+Suppose $\ph_1^*,\ldots,\ph_n^*$ are the only sentences from $\Ga^*$ that appear in this proof.
+Then $\ph_1^*,\ldots,\ph_n^*\provest\ph^*$.
 Now, by @lem-T-reduction, we have $\ph_i\provest\ph_i^*$, for $i=1,\ldots,n$.
 Hence, $\ph_1,\ldots,\ph_n\provest\ph^*$.
 But since $\ph_1,\ldots,\ph_n$ are all in $\Ga$ it follows that $\Ga\provest\ph^*$.
