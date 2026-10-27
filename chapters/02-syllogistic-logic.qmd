@@ -56,7 +56,7 @@ $$
 \cop{A}{B}
 $$
 where $A$ and $B$ are terms and $\ast$ is a copula.
-We refer to the sentences of $\Ls$ as _categorical_ sentences.[^categorical] In the categorical sentence $\cop{A}{B}$, the term $A$ is referred to as the _subject_ of the sentence and $B$ as its _predicate_.[^term-order]
+We sometimes refer to the sentences of $\Ls$ as _categorical_ sentences.[^categorical] In the categorical sentence $\cop{A}{B}$, the term $A$ is referred to as the _subject_ of the sentence and $B$ as its _predicate_.[^term-order]
 :::
 
 [^categorical]: While this is not Aristotle's own terminology, the description of the sentences of his syllogistic as 'categorical' was standard in antiquity (see @Malink2013-kc, p. 24).
@@ -306,8 +306,8 @@ $$
 \some{A}{B}, \all{B}{C}\proves\some{A}{C}
 $$
 To enable the proof of such arguments, we could strengthen the system $\S$ by adding to it additional rules of inference.
-This, however, is not the primary approach adopted by Aristotle.
-To prove such arguments, Aristotle instead employs a new method of proof which he have not yet considered, the method of _reductio ad absurdum_ or proof by contradiction.
+Interestingly, however, this is not the primary approach adopted by Aristotle.
+To prove such arguments, Aristotle instead employs a new method of proof of a kind we have not yet considered, the method of _reductio ad absurdum_ or proof by contradiction.
 To formalize proofs by contradiction, we have to revisit our original definition of a proof system and expand it so as to accommodate what we shall refer to as 'hypothetical' methods of proof.
 
 ### Hypothetical Methods of Proof
@@ -333,7 +333,7 @@ For any categorical sentence $\ph$, we write $\neg\ph$ for the contradictory of 
 
 Note that the symbol '$\neg$' is not in the alphabet of the language $\Ls$.
 We introduce it here as a  metalinguistic device for referring to one sentence by means of another.
-Thus, for example, $\neg\some{A}{B}$ is not a new sentence of the language $\Ls$.
+Thus, $\neg\some{A}{B}$ is not a new sentence of the language $\Ls$.
 It is simply another name for the sentence $\no{A}{B}$.
 
 Appealing to the notion of the contradictory of a sentence, we can describe the method of proof by contradiction as follows: (1) first, posit, as a hypothesis, a sentence $\ph$; (2) next, derive from this hypothesis, together with the premises, a contradictory pair of sentences of the form $\psi$ and $\neg\psi$; (3) finally, having done so, discharge the hypothesis, and conclude that the premises entail the contradictory of the hypothesis, $\neg\ph$.
@@ -360,7 +360,7 @@ Consequently, there is no way of indicating that the hypothesis $\all{C}{B}$ is 
 The most straightforward way of indicating this would be to state explicitly, in each line of the proof, the sentences which are being presupposed at that specific stage of the reasoning.
 Proofs would then not be sequences of sentences, but rather sequences of sentences each of which is asserted with respect to a given set of hypotheses.
 
-A natural way to model such proofs is as a sequence of arguments, where the premises of the argument appearing in this sequence indicate the hypotheses in effect at that stage of the reasoning.
+A natural way to model such proofs is as a sequence of _arguments_, where the premises of the argument appearing in this sequence indicate the hypotheses in effect at that stage of the reasoning.
 On this modeling, the above proof by contradiction can be rewritten as follows:
 
 :::{.lproof}
@@ -522,7 +522,7 @@ What we would like to be able to do is repeat or  'reiterate' the sentence $\som
     10. \Gamma \vdash C\textrm{\textbf{o}}D      [Contradiction: 8, 9]
 :::
 
-What justifies us in reiterating already established sentences in the context of new subproofs is the fact that the system $\S$ is monotonic, that is, if $\Ga\provess\ph$, then $\Ga,\De\provess\ph$ (see Exercise @exr-S-monotonicity).
+What justifies us in reiterating already established sentences in the context of new subproofs is the fact that the system $\S$ is monotonic, that is, if $\Ga\provess\ph$, then $\Ga,\De\provess\ph$ (see @exr-S-monotonicity).
 We can thus treat reiteration as a derived rule of inference.
 
 One commonly used notation for giving more streamlined representations of proofs involving hypothetical methods of reasoning is referred to as Fitch notation.[^fitch] As with the simple direct proofs discussed in Chapter 1, Fitch-style proofs are displayed as sequences of sentences rather than arguments.

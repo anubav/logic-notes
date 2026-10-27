@@ -1,6 +1,6 @@
 ### Relevant Proofs
 
-Aristotle defines a syllogism as an argument '... in which, certain things, having been supposed, something different from the things supposed results of necessity because these things are so'.[^prA-syllogism] This definition comports with the view that a valid argument is one in which the truth of the premises necessitate the truth of the conclusion.
+Aristotle defines a syllogism as an argument '... in which, certain things, having been supposed, something different from the things supposed results of necessity because these things are so'.[^prA-syllogism] This definition comports with the view that a valid argument is one in which the truth of the premises necessitates the truth of the conclusion.
 But it says something more.
 The definition also says that it must be _because_ of the truth of the premises that the conclusion holds.
 
