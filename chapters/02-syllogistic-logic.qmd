@@ -662,7 +662,7 @@ Our reformulation of this theorem will be in terms of two new notions: satisfiab
 
 Let $\Gamma$ be any set of categorical sentences.
 We say that $\Gamma$ is _satisfiable_ iff there exists a model $\mathcal{M}=(\W,\si)$ of $\Ls$, such that $val^\mathcal{M}(\ph)=\true$, for all $\ph\in\Gamma$.
-We say that $\Gamma$ is _unsatisfiable_ if it is not satisfiable.
+We say that $\Gamma$ is unsatisfiable if it is not satisfiable.
 
 :::
 
@@ -670,7 +670,7 @@ We say that $\Gamma$ is _unsatisfiable_ if it is not satisfiable.
 
 Let $\Gamma$ be any set of categorical sentences.
 We say that $\Gamma$ is _consistent_ iff there is no sentence $\ph$, such that $\Gamma\provess \ph$, and $\Gamma\provess\neg\ph$.
-We say that $\Gamma$ is _inconsistent_ if it is not consistent.
+We say that $\Gamma$ is inconsistent if it is not consistent.
 
 :::
 
