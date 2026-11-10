@@ -13,7 +13,7 @@ crossref:
 
 Propositional logic is the study of the inferential relations that obtain between compound propositions that are built up from other more simple propositions through the application of various logical operations.
 The specific system of propositional logic that we will study in this chapter will focus on a particular kind of proposition forming operation, namely, that which yields a compound proposition the truth value of which is a function of the truth values of the component propositions from which it is constructed.
-Such operations are all called 'truth-functional' operations, or, 'Boolean' operations, for short.[^Boole]
+Such operations are called 'truth-functional' operations, or, 'Boolean' operations, for short.[^Boole]
 
 [^Boole]: The label 'Boolean' is in honor of the English mathematician George Boole, whose seminal work, _An Investigation of the Laws of Thought_ [-@Boole1854-ur], layed the foundation for the branch of mathematics now called Boolean algebra.
 In the examples given in this chapter, we will explain, in more detail, how Boolean algebra can be view as a system of propositional logic.
@@ -21,8 +21,8 @@ In the examples given in this chapter, we will explain, in more detail, how Bool
 Truth-functional, or Boolean, propositional logic forms the core of most other systems of logic utilized in philosophical analysis, including first-order predicate logic and modal logic.[^classical] It also provides the standard context in which the theory of probability is developed.
 It thus constitutes the first essential entry in a philosophy student's logical toolkit.
 
-In this chapter, we will introduce a formal language in which to represent arguments of propositional logic, a semantic framework in which to assess their validity, and a deductive system in which to carry out proofs.
-We will then proceed to show that this deductive system is both sound and complete.
+In this chapter, we will introduce a formal language in which to represent arguments of propositional logic, a semantic framework in which to assess their validity, and a proof system in which to conduct propositional reasoning.
+We will then proceed to show that this proof system is both sound and complete.
 
 [^classical]: Truth-functional, or Boolean, propositional logic is often referred to as _classical_ propositional logic.
 This label is a misnomer, for truth-functional propositional logic is neither classical in the sense of being the first system of propositional logic to have been studied, nor in the sense of having its origin in Greek or Latin antiquity.
@@ -48,7 +48,7 @@ $$
 $$
 
 These are referred to collectively as propositional connectives, and, respectively, as the negation operator ($\neg$), the conjunction operator ($\conj$), the disjunction operator ($\disj$), and the conditional operator ($\imp$).
-The latter three connectives (i.e., $\conj, \disj$, and $\imp$) are referred to as binary connectives, whereas the negation operator is referred to as a unary connective.
+The latter three connectives (i.e., $\conj, \disj$, and $\imp$) are referred to as binary connectives, whereas the negation operator is a unary connective.
 
 Lastly, the alphabet for $\Lp$ also includes the left and right parentheses:
 
@@ -118,11 +118,11 @@ Consider the conjunction operator $\conj$.
 Viewed as a proposition forming operation, this operator maps two propositions, signified by the sentences $\ph$ and $\psi$, to a new compound proposition signified by their conjunction $(\ph\conj\psi)$.
 By the latter, we mean a proposition that is true just in case both of the propositions signified by its conjuncts are true.
 Setting aside the particulars, the conjunction operator, then, maps two propositions to a new proposition whose truth value is a function of the truth values of the two propositions from which it was constructed.
-The negation operator, works the same way.
+The negation operator works the same way.
 It maps a single proposition, signified by the sentence $\ph$, to a new proposition, signified by $(\neg\ph)$, the truth value of which is a function of the truth value of $\ph$ -- false, if it is true, and true if it is false.
 Our intended semantics for the logical connectives may thus be described as a 'truth-functional' semantics.
 This means that the truth values of compound sentences will be fully determined by the truth values of the component sentences out of which they are formed.
-In this way, the truth values of all the sentences of the language will supervene on the truth values of the atomic ones.
+In this way, the truth values of all the sentences of the language will be determined by the truth values of the atomic ones.
 
 While it is true that the atomic sentences represent simple propositions, the only feature of these propositions that is semantically relevant in the sense that it contributes to assessing the truth values of the sentences in the language is their own truth or falsehood.
 Thus, in this context, we may think of a simple proposition as nothing more than the bearer of a truth value, and the possible semantic values of the atoms as the possible truth values of the propositions they express.
@@ -223,7 +223,7 @@ $$
 
 Rules (S1), (S2), and (S3) impose constraints on the truth valuation $val^\si$.
 However, in order for these constraints to comprise a set of semantic rules, it must be the case that, for every interpretation $\si$ there exists one and only one truth valuation $val^\si$ that satisfies these constraints.
-As yet, we have not established that this is the case, for we have not yet proven that every compound sentence in $\Lp$ has a _unique_ decomposition into simpler ones.
+We have not yet established that this is the case, for we have not yet proven that every compound sentence in $\Lp$ has a _unique_ decomposition into simpler ones.
 If, for example, a single sentence were to be both the negation of $\ph$ _and_ the conjunction of $\psi$ and $\chi$, then it may be that the rules (S2) and (S3) cannot be jointly satisfied since each may require $val^\si$ to assign different truth values to this sentence.
 In the following section we will prove that the rules (S1), (S2), and (S3) do, in fact, constitute a consistent set of semantic rules for the language by showing that the sentences of $\Lp$  are uniquely decomposable.[^unique-decomposition]
 
